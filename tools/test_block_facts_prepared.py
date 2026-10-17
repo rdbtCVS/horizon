@@ -13,6 +13,7 @@ import re
 import shutil
 import subprocess
 import tempfile
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -21,6 +22,13 @@ FILES = ("facts.json", "gameplay-facts.json", "block-behaviours.json")
 
 def run(exe, root, mode):
     return subprocess.check_output([str(exe), str(root), mode], text=True)
+
+def assert_source(exe, root, mode, source):
+    result = subprocess.run([str(exe), str(root), mode], text=True,
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                            env={**os.environ, "HORIZON_FACTS_SOURCE": "1"}, check=True)
+    assert f"HORIZON_FACTS_SOURCE={source}" in result.stderr, (
+        f"{mode} should use {source}, got {result.stderr}")
 
 
 def digest(exe, root):
@@ -49,6 +57,9 @@ def main():
         assert cache.is_file()
         assert digest(exe, root) == baseline, "Prepared facts changed game behavior"
         cached = cache.read_bytes()
+        assert_source(exe, root, "digest", "prepared")
+        assert_source(exe, root, "registry-property", "json")
+        assert_source(exe, root, "registry-default", "json")
         run(exe, root, "prepare")
         assert cache.read_bytes() == cached, "Unchanged source rebuilt the prepared cache"
         # The same three facts files are linked through a resource-pack root;
@@ -61,6 +72,22 @@ def main():
         (pack_root / "assets/test").mkdir(parents=True)
         (pack_root / "assets/test/custom.txt").write_text("resource-pack-only override")
         assert digest(exe, pack_root) == baseline, "Visual-only pack overlay changed block facts"
+        assert_source(exe, pack_root, "digest", "prepared")
+
+        # A content override can coexist with a symlink to the vanilla cache.
+        # This is a synthetic gameplay-affecting overlay, independent of whether
+        # a particular pack format exposes this file as a normal override.
+        override = pack_root / "gameplay-facts.json"
+        override.unlink()
+        changed = json.loads((root / "gameplay-facts.json").read_text())
+        changed["states"][0]["emission"] = 6 if changed["states"][0].get("emission") != 6 else 5
+        override.write_text(json.dumps(changed))
+        changed_overlay = digest(exe, pack_root)
+        assert changed_overlay != baseline
+        assert_source(exe, pack_root, "digest", "json")
+        assert_source(exe, pack_root, "registry-property", "json")
+        override.unlink()
+        override.symlink_to(root / "gameplay-facts.json")
         cache.write_bytes(b"invalid prepared file")
         assert digest(exe, root) == baseline, "Corrupt cache did not fall back to JSON"
         cache.write_bytes(cached)
@@ -73,6 +100,34 @@ def main():
         cache.write_bytes(b"HBF0" + cached[4:])
         assert digest(exe, root) == baseline, "Incompatible cache version bypassed validation"
         cache.write_bytes(cached)
+        cache.write_bytes(cached[:17])
+        assert_source(exe, root, "digest", "json")
+        cache.write_bytes(cached)
+        cache.write_bytes(os.urandom(256))
+        assert_source(exe, root, "digest", "json")
+        cache.write_bytes(cached)
+        # A sparse oversized file must be rejected before allocation or parsing.
+        with cache.open("wb") as out:
+            out.truncate(129 * 1024 * 1024)
+        assert_source(exe, root, "digest", "json")
+        cache.write_bytes(cached)
+
+        # Interrupted writers can leave partial temporary files; they must not
+        # change the published table or the observed facts.
+        (root / "gameplay-facts-prepared.bin.tmp").write_bytes(cached[:117])
+        assert_source(exe, root, "digest", "prepared")
+        (root / "gameplay-facts-prepared.bin.tmp").unlink()
+
+        # Concurrent preparations of an initially absent table must publish a
+        # complete file via independent temporary names, without writer errors.
+        cache.unlink()
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            results = list(pool.map(lambda _: run(exe, root, "prepare"), range(4)))
+        assert len(results) == 4
+        assert_source(exe, root, "digest", "prepared")
+        assert digest(exe, root) == baseline
+        assert not list(root.glob(".tmp*")), "A writer left a temporary file"
+        cached = cache.read_bytes()
 
         # Preserve original source size and modification time while changing
         # an individual numeric fact: metadata-only validation would miss it.
@@ -111,6 +166,8 @@ def main():
         print(f"PASS: corrupt cache falls back to JSON ({len(cached):,} cache bytes)")
         print("PASS: incompatible version, corrupt payload, and preserved-metadata source changes")
         print("PASS: resource-pack overlay reuses identical state facts")
+        print("PASS: modified registry identity/defaults, gameplay override, and combined override")
+        print("PASS: truncated, oversized and malformed data; concurrent and interrupted writes")
         print("PASS: changed gameplay facts invalidate and rebuild the cache")
 
 

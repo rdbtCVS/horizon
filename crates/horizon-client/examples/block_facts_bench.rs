@@ -28,8 +28,33 @@ fn tag(value: &Value) -> Result<Tag> {
         _ => return Err("registry value".into()),
     })
 }
-fn registry(root: &Path) -> Result<BlockRegistry> {
-    let facts: Value = serde_json::from_slice(&fs::read(root.join("facts.json"))?)?;
+fn registry(root: &Path, mode: &str) -> Result<BlockRegistry> {
+    let mut facts: Value = serde_json::from_slice(&fs::read(root.join("facts.json"))?)?;
+    if mode == "registry-property" {
+        // A caller may construct a registry with different properties while
+        // the cached resource files still have exactly the same hashes.
+        let states = facts["states"].as_array_mut().ok_or("registry states")?;
+        let grass = states
+            .iter_mut()
+            .find(|s| s[0] == "minecraft:grass_block" && s[4]["properties"]["snowy"] == "true")
+            .ok_or("snowy grass state")?;
+        grass[4]["properties"]["snowy"] = Value::String("modified".into());
+    } else if mode == "registry-default" {
+        let states = facts["states"].as_array().ok_or("registry states")?;
+        let alternative = states
+            .iter()
+            .enumerate()
+            .find(|(i, s)| {
+                s[0] == "minecraft:grass_block"
+                    && *i
+                        != facts["defaults"]["minecraft:grass_block"]
+                            .as_u64()
+                            .unwrap_or(u64::MAX) as usize
+            })
+            .ok_or("alternative grass default")?
+            .0;
+        facts["defaults"]["minecraft:grass_block"] = Value::from(alternative as u64);
+    }
     Ok(BlockRegistry::from_nbt(&Tag::compound([
         ("DataVersion", Tag::Int(DATA_VERSION)),
         (
@@ -52,8 +77,9 @@ pub fn main() -> Result<()> {
         args.first()
             .ok_or("usage: block_facts_bench ROOT [SAMPLES|digest]")?,
     );
+    let mode = args.get(1).map(String::as_str).unwrap_or("");
     let setup = Instant::now();
-    let registry = registry(root)?;
+    let registry = registry(root, mode)?;
     println!(
         "registry_setup_ms={:.3}",
         setup.elapsed().as_secs_f64() * 1000.0
@@ -64,7 +90,7 @@ pub fn main() -> Result<()> {
         println!("prepare_ms={:.3}", start.elapsed().as_secs_f64() * 1000.0);
         return Ok(());
     }
-    if args.get(1).is_some_and(|s| s == "digest") {
+    if matches!(mode, "digest" | "registry-property" | "registry-default") {
         let facts = BlockFacts::load(root, &registry)?;
         let mut hash = DefaultHasher::new();
         let mut shapes = HashMap::new();

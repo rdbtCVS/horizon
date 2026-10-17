@@ -6,11 +6,21 @@ use horizon_world::{DATA_VERSION, nbt::Tag, registry::BlockRegistry};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use sha2::{Digest, Sha256};
-use std::{collections::HashMap, fs, io::Read, path::Path, sync::Arc, time::UNIX_EPOCH};
+use std::{
+    collections::HashMap,
+    fs,
+    io::{Read, Write},
+    path::Path,
+    sync::Arc,
+    time::UNIX_EPOCH,
+};
 
 const FILE: &str = "gameplay-facts-prepared.bin";
-const VERSION: u32 = 2;
-const MAGIC: &[u8; 4] = b"HBF2";
+const VERSION: u32 = 3;
+const MAGIC: &[u8; 4] = b"HBF3";
+// Corrupt or unrelated files must never cause arbitrary allocations during startup.
+// Larger modded registries can still use the authoritative JSON loader.
+const MAX_PREPARED_BYTES: u64 = 128 * 1024 * 1024;
 const SOURCES: [&str; 3] = ["facts.json", "gameplay-facts.json", "block-behaviours.json"];
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
@@ -44,6 +54,7 @@ struct Prepared {
     version: u32,
     stamps: [Stamp; 3],
     source_hashes: [[u8; 32]; 3],
+    registry_hash: [u8; 32],
     air: u32,
     // The shape indices preserve the original sharing partition, including
     // distinct fallback shapes with equal geometry.
@@ -77,6 +88,29 @@ fn source_hashes(root: &Path) -> Result<[[u8; 32]; 3]> {
     Ok(hashes)
 }
 
+/// Includes the complete state ID order, property values, and default IDs.
+/// Name-only comparisons cannot detect a changed water level or orientation.
+fn registry_hash(registry: &BlockRegistry) -> [u8; 32] {
+    fn part(hash: &mut Sha256, value: &str) {
+        hash.update((value.len() as u64).to_le_bytes());
+        hash.update(value.as_bytes());
+    }
+    let mut hash = Sha256::new();
+    hash.update((registry.len() as u64).to_le_bytes());
+    for i in 0..registry.len() {
+        let id = horizon_world::registry::BlockStateId(i as u32);
+        let state = registry.state(id).expect("registry state index");
+        part(&mut hash, &state.name);
+        hash.update((state.properties.len() as u64).to_le_bytes());
+        for (key, value) in &state.properties {
+            part(&mut hash, key);
+            part(&mut hash, value);
+        }
+        hash.update([u8::from(registry.default_state(&state.name) == Some(id))]);
+    }
+    hash.finalize().into()
+}
+
 fn decode(bytes: &[u8]) -> Option<Prepared> {
     let body = bytes.strip_prefix(MAGIC)?;
     let (checksum, payload) = body.split_at_checked(32)?;
@@ -99,7 +133,11 @@ pub(super) fn load(root: &Path, registry: &BlockRegistry) -> Result<Option<Block
     let Some(stamps) = source_stamps(root) else {
         return Ok(None);
     };
-    let Ok(bytes) = fs::read(root.join(FILE)) else {
+    let cache = root.join(FILE);
+    if !fs::metadata(&cache).is_ok_and(|m| m.is_file() && m.len() <= MAX_PREPARED_BYTES) {
+        return Ok(None);
+    }
+    let Ok(bytes) = fs::read(cache) else {
         return Ok(None);
     };
     let Some(mut saved) = decode(&bytes) else {
@@ -107,10 +145,11 @@ pub(super) fn load(root: &Path, registry: &BlockRegistry) -> Result<Option<Block
     };
     if saved.version != VERSION
         || saved.stamps != stamps
-        || saved.source_hashes != source_hashes(root)?
         || saved.states.len() != registry.len()
         || saved.shape_ids.len() != registry.len()
         || saved.air as usize >= registry.len()
+        || saved.registry_hash != registry_hash(registry)
+        || source_hashes(root).ok() != Some(saved.source_hashes)
     {
         return Ok(None);
     }
@@ -182,7 +221,9 @@ pub(super) fn prepare(root: &Path) -> Result<()> {
     // The launcher can call resource preparation on every launch. Do not
     // reconstruct the 35k-state registry just to find an unchanged cache.
     if let Some(current) = source_stamps(root) {
-        if let Ok(bytes) = fs::read(root.join(FILE)) {
+        if fs::metadata(root.join(FILE)).is_ok_and(|m| m.is_file() && m.len() <= MAX_PREPARED_BYTES)
+            && let Ok(bytes) = fs::read(root.join(FILE))
+        {
             if let Some(saved) = decode(&bytes) {
                 if saved.version == VERSION
                     && saved.stamps == current
@@ -193,6 +234,11 @@ pub(super) fn prepare(root: &Path) -> Result<()> {
             }
         }
     }
+    // Bind the precomputation to exactly the inputs it read. If a resource
+    // exporter rewrites a file during preparation, do not publish a cache
+    // with new hashes for facts constructed from old bytes.
+    let before_stamps = stamps(root)?;
+    let before_hashes = source_hashes(root)?;
     let active = registry(root)?;
     let facts = BlockFacts::load_json(root, &active)?;
     let mut shape_keys: HashMap<(usize, usize), u32> = HashMap::new();
@@ -216,26 +262,42 @@ pub(super) fn prepare(root: &Path) -> Result<()> {
         state.outline = Arc::from([]);
         state.outline_edges = Arc::from([]);
     }
+    if stamps(root)? != before_stamps || source_hashes(root)? != before_hashes {
+        return Err(
+            "block facts changed during cache preparation; retry resource preparation".into(),
+        );
+    }
     let prepared = Prepared {
         version: VERSION,
-        stamps: stamps(root)?,
-        source_hashes: source_hashes(root)?,
+        stamps: before_stamps,
+        source_hashes: before_hashes,
+        registry_hash: registry_hash(&active),
         air: facts.air.0,
         shapes,
         shape_ids,
         states,
     };
     let data = encode(&prepared)?;
-    let temporary = root.join(format!("{FILE}.tmp"));
-    fs::write(&temporary, data)?;
+    // Each writer owns its own file; readers only see completed publications.
+    // NamedTempFile also cleans up after failed or interrupted writes.
+    let mut temporary = tempfile::NamedTempFile::new_in(root)?;
+    temporary.write_all(&data)?;
+    temporary.as_file().sync_all()?;
     let destination = root.join(FILE);
-    if let Err(error) = fs::rename(&temporary, &destination) {
-        // On Windows rename cannot replace an existing file.
-        if !destination.exists() {
-            return Err(error.into());
+    #[cfg(unix)]
+    temporary.persist(&destination)?;
+    #[cfg(not(unix))]
+    {
+        // Windows cannot rename over an existing file. If interrupted after
+        // removing it, the next load safely takes the JSON path.
+        match temporary.persist(&destination) {
+            Ok(_) => {}
+            Err(error) if destination.is_file() => {
+                fs::remove_file(&destination)?;
+                error.file.persist(&destination)?;
+            }
+            Err(error) => return Err(error.into()),
         }
-        fs::remove_file(&destination)?;
-        fs::rename(&temporary, &destination)?;
     }
     Ok(())
 }
