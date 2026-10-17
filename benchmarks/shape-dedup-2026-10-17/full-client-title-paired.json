@@ -1,0 +1,2573 @@
+{
+  "scope": "actual Horizon client process start to status title + renderer (offscreen)",
+  "start_utc": "2026-10-17T00:26:33.625564+00:00",
+  "platform": "Linux-7.2.8-zen1-2-zen-x86_64-with-glibc2.44",
+  "python": "3.14.7",
+  "cpu_model": "AMD Ryzen 5 5600X 6-Core Processor",
+  "resources": "/srv/bob-data/horizon/.local/horizon-client/26.3",
+  "resource_sha256": {
+    "facts.json": "1d24883ee807b0b71473f0bbf8ed548ddaf712148caeb3fcc7aa13ab973a97b0",
+    "block-behaviours.json": "485a4542ac64ef6b1e61111c77f4e11ae4906225319f1ccbdcaf1a3ea5682a7d",
+    "gameplay-facts.json": "dc5b038007a46acbed8d93dbb8578a67d67a9bad56376af997d5d315076285cd",
+    "block-tags.json": "5e1301e5a9abf7e4de93af5dae3a157e852dbdb4ea345c2eb626305a605d4f98",
+    "cached-collision.nbt": "4a274cd720a1bda585b02f50f16e90246576679e1e173c214548c5cbf607ab2d"
+  },
+  "binary_sha256": {
+    "baseline": "52c150114d4aedd4208a75629446a76c5928e4fc1b9b770124a0214b79e8d407",
+    "optimized": "f5ccfe0ae53ad8c7e5a413f2f2dde9ff8b0f5238f499c5f78c084b01f92d0702"
+  },
+  "binaries": {
+    "baseline": "/srv/bob-data/horizon/.local/shape-identity-baseline-target/fast/horizon-client",
+    "optimized": "/srv/bob-data/horizon/.local/shape-identity-optimized-target/fast/horizon-client"
+  },
+  "configuration": "--offscreen --no-pause --control-socket, fresh empty cwd, HORIZON_NO_AUDIO=1, HORIZON_MENU_STYLE=classic",
+  "gpu_note": "Both clients render offscreen with identical hardware/driver; per-run renderer metadata saved",
+  "poll_interval_ms": 25,
+  "affinity": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "warmups_per_binary": 4,
+  "runs_per_binary": 20,
+  "pause_ms": 200,
+  "timeout_s": 45.0,
+  "system_load_before": [
+    12.28857421875,
+    16.89794921875,
+    21.2392578125
+  ],
+  "pairs": [
+    {
+      "order": [
+        "baseline",
+        "optimized"
+      ],
+      "load_before": [
+        8.82958984375,
+        15.6162109375,
+        20.673828125
+      ],
+      "pressure_before": {
+        "avg10": 1.47,
+        "avg60": 7.17,
+        "avg300": 16.44,
+        "total": 1595008134.0
+      },
+      "compilers_before": 0,
+      "gpu_before": [
+        "11, 3, 1175"
+      ],
+      "measurements": {
+        "baseline": {
+          "wall_ready_ms": 3394.473,
+          "cpu_ready_ms": 3420.0,
+          "first_frame_logged_ms": 362,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 47,
+            "nonvoluntary_ctxt_switches": 241
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 450.0,
+            "facts": 740.0,
+            "items": 790.0,
+            "biomes+env": 800.0,
+            "pack tables": 1060.0,
+            "atlas": 1130.0,
+            "collision+motion": 1590.0
+          }
+        },
+        "optimized": {
+          "wall_ready_ms": 3412.863,
+          "cpu_ready_ms": 3430.0,
+          "first_frame_logged_ms": 344,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 104,
+            "nonvoluntary_ctxt_switches": 209
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 480.0,
+            "facts": 760.0,
+            "items": 800.0,
+            "biomes+env": 820.0,
+            "pack tables": 1100.0,
+            "atlas": 1170.0,
+            "collision+motion": 1650.0
+          }
+        }
+      },
+      "load_after": [
+        7.92626953125,
+        15.2001953125,
+        20.48388671875
+      ],
+      "pressure_after": {
+        "avg10": 0.84,
+        "avg60": 6.31,
+        "avg300": 16.0,
+        "total": 1595072650.0
+      },
+      "compilers_after": 0,
+      "gpu_after": [
+        "0, 2, 1174"
+      ]
+    },
+    {
+      "order": [
+        "optimized",
+        "baseline"
+      ],
+      "load_before": [
+        7.92626953125,
+        15.2001953125,
+        20.48388671875
+      ],
+      "pressure_before": {
+        "avg10": 0.84,
+        "avg60": 6.31,
+        "avg300": 16.0,
+        "total": 1595073533.0
+      },
+      "compilers_before": 0,
+      "gpu_before": [
+        "0, 1, 1171"
+      ],
+      "measurements": {
+        "optimized": {
+          "wall_ready_ms": 3396.814,
+          "cpu_ready_ms": 3420.0,
+          "first_frame_logged_ms": 370,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 112,
+            "nonvoluntary_ctxt_switches": 209
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 510.0,
+            "facts": 810.0,
+            "items": 860.0,
+            "biomes+env": 870.0,
+            "pack tables": 1140.0,
+            "atlas": 1200.0,
+            "collision+motion": 1690.0
+          }
+        },
+        "baseline": {
+          "wall_ready_ms": 3405.763,
+          "cpu_ready_ms": 3430.0,
+          "first_frame_logged_ms": 350,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 68,
+            "nonvoluntary_ctxt_switches": 108
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 470.0,
+            "facts": 760.0,
+            "items": 800.0,
+            "biomes+env": 820.0,
+            "pack tables": 1080.0,
+            "atlas": 1150.0,
+            "collision+motion": 1620.0
+          }
+        }
+      },
+      "load_after": [
+        7.45166015625,
+        14.98095703125,
+        20.38427734375
+      ],
+      "pressure_after": {
+        "avg10": 0.46,
+        "avg60": 5.71,
+        "avg300": 15.67,
+        "total": 1595165625.0
+      },
+      "compilers_after": 0,
+      "gpu_after": [
+        "0, 35, 1163"
+      ]
+    },
+    {
+      "order": [
+        "baseline",
+        "optimized"
+      ],
+      "load_before": [
+        7.45166015625,
+        14.98095703125,
+        20.38427734375
+      ],
+      "pressure_before": {
+        "avg10": 0.92,
+        "avg60": 5.62,
+        "avg300": 15.59,
+        "total": 1595166497.0
+      },
+      "compilers_before": 0,
+      "gpu_before": [
+        "0, 0, 1167"
+      ],
+      "measurements": {
+        "baseline": {
+          "wall_ready_ms": 3382.47,
+          "cpu_ready_ms": 3410.0,
+          "first_frame_logged_ms": 325,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 44,
+            "nonvoluntary_ctxt_switches": 146
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 480.0,
+            "facts": 780.0,
+            "items": 820.0,
+            "biomes+env": 840.0,
+            "pack tables": 1120.0,
+            "atlas": 1190.0,
+            "collision+motion": 1670.0
+          }
+        },
+        "optimized": {
+          "wall_ready_ms": 3403.492,
+          "cpu_ready_ms": 3430.0,
+          "first_frame_logged_ms": 356,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 45,
+            "nonvoluntary_ctxt_switches": 152
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 500.0,
+            "facts": 790.0,
+            "items": 830.0,
+            "biomes+env": 850.0,
+            "pack tables": 1120.0,
+            "atlas": 1180.0,
+            "collision+motion": 1670.0
+          }
+        }
+      },
+      "load_after": [
+        6.6865234375,
+        14.5693359375,
+        20.19189453125
+      ],
+      "pressure_after": {
+        "avg10": 0.5,
+        "avg60": 5.08,
+        "avg300": 15.27,
+        "total": 1595220705.0
+      },
+      "compilers_after": 0,
+      "gpu_after": [
+        "2, 1, 1200"
+      ]
+    },
+    {
+      "order": [
+        "optimized",
+        "baseline"
+      ],
+      "load_before": [
+        6.6865234375,
+        14.5693359375,
+        20.19189453125
+      ],
+      "pressure_before": {
+        "avg10": 0.5,
+        "avg60": 5.08,
+        "avg300": 15.27,
+        "total": 1595223677.0
+      },
+      "compilers_before": 0,
+      "gpu_before": [
+        "2, 1, 1182"
+      ],
+      "measurements": {
+        "optimized": {
+          "wall_ready_ms": 3340.182,
+          "cpu_ready_ms": 3350.0,
+          "first_frame_logged_ms": 340,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 74,
+            "nonvoluntary_ctxt_switches": 153
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 470.0,
+            "facts": 770.0,
+            "items": 820.0,
+            "biomes+env": 840.0,
+            "pack tables": 1120.0,
+            "atlas": 1190.0,
+            "collision+motion": 1670.0
+          }
+        },
+        "baseline": {
+          "wall_ready_ms": 3296.695,
+          "cpu_ready_ms": 3320.0,
+          "first_frame_logged_ms": 347,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 62,
+            "nonvoluntary_ctxt_switches": 117
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 460.0,
+            "facts": 740.0,
+            "items": 780.0,
+            "biomes+env": 790.0,
+            "pack tables": 1070.0,
+            "atlas": 1130.0,
+            "collision+motion": 1580.0
+          }
+        }
+      },
+      "load_after": [
+        6.31103515625,
+        14.3603515625,
+        20.09375
+      ],
+      "pressure_after": {
+        "avg10": 0.22,
+        "avg60": 4.45,
+        "avg300": 14.85,
+        "total": 1595259593.0
+      },
+      "compilers_after": 0,
+      "gpu_after": [
+        "12, 4, 1174"
+      ]
+    },
+    {
+      "order": [
+        "baseline",
+        "optimized"
+      ],
+      "load_before": [
+        6.31103515625,
+        14.3603515625,
+        20.09375
+      ],
+      "pressure_before": {
+        "avg10": 0.22,
+        "avg60": 4.45,
+        "avg300": 14.85,
+        "total": 1595260241.0
+      },
+      "compilers_before": 0,
+      "gpu_before": [
+        "12, 4, 1169"
+      ],
+      "measurements": {
+        "baseline": {
+          "wall_ready_ms": 3457.682,
+          "cpu_ready_ms": 3470.0,
+          "first_frame_logged_ms": 361,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 63,
+            "nonvoluntary_ctxt_switches": 368
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 480.0,
+            "facts": 810.0,
+            "items": 850.0,
+            "biomes+env": 870.0,
+            "pack tables": 1130.0,
+            "atlas": 1200.0,
+            "collision+motion": 1690.0
+          }
+        },
+        "optimized": {
+          "wall_ready_ms": 3217.327,
+          "cpu_ready_ms": 3240.0,
+          "first_frame_logged_ms": 326,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 53,
+            "nonvoluntary_ctxt_switches": 144
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 450.0,
+            "facts": 740.0,
+            "items": 780.0,
+            "biomes+env": 800.0,
+            "pack tables": 1070.0,
+            "atlas": 1130.0,
+            "collision+motion": 1590.0
+          }
+        }
+      },
+      "load_after": [
+        7.22705078125,
+        14.29736328125,
+        20.01171875
+      ],
+      "pressure_after": {
+        "avg10": 0.39,
+        "avg60": 4.09,
+        "avg300": 14.56,
+        "total": 1595333257.0
+      },
+      "compilers_after": 0,
+      "gpu_after": [
+        "0, 10, 1166"
+      ]
+    },
+    {
+      "order": [
+        "optimized",
+        "baseline"
+      ],
+      "load_before": [
+        7.22705078125,
+        14.29736328125,
+        20.01171875
+      ],
+      "pressure_before": {
+        "avg10": 0.32,
+        "avg60": 3.95,
+        "avg300": 14.47,
+        "total": 1595333426.0
+      },
+      "compilers_before": 0,
+      "gpu_before": [
+        "0, 1, 1166"
+      ],
+      "measurements": {
+        "optimized": {
+          "wall_ready_ms": 3231.266,
+          "cpu_ready_ms": 3250.0,
+          "first_frame_logged_ms": 332,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 65,
+            "nonvoluntary_ctxt_switches": 105
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 460.0,
+            "facts": 740.0,
+            "items": 780.0,
+            "biomes+env": 800.0,
+            "pack tables": 1060.0,
+            "atlas": 1130.0,
+            "collision+motion": 1600.0
+          }
+        },
+        "baseline": {
+          "wall_ready_ms": 3394.024,
+          "cpu_ready_ms": 3420.0,
+          "first_frame_logged_ms": 333,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 141,
+            "nonvoluntary_ctxt_switches": 131
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 490.0,
+            "facts": 790.0,
+            "items": 830.0,
+            "biomes+env": 850.0,
+            "pack tables": 1110.0,
+            "atlas": 1180.0,
+            "collision+motion": 1670.0
+          }
+        }
+      },
+      "load_after": [
+        6.88818359375,
+        14.109375,
+        19.919921875
+      ],
+      "pressure_after": {
+        "avg10": 0.17,
+        "avg60": 3.58,
+        "avg300": 14.17,
+        "total": 1595371461.0
+      },
+      "compilers_after": 0,
+      "gpu_after": [
+        "13, 3, 1167"
+      ]
+    },
+    {
+      "order": [
+        "baseline",
+        "optimized"
+      ],
+      "load_before": [
+        6.88818359375,
+        14.109375,
+        19.919921875
+      ],
+      "pressure_before": {
+        "avg10": 0.17,
+        "avg60": 3.58,
+        "avg300": 14.17,
+        "total": 1595372986.0
+      },
+      "compilers_before": 1,
+      "gpu_before": [
+        "13, 3, 1167"
+      ],
+      "measurements": {
+        "baseline": {
+          "wall_ready_ms": 3366.126,
+          "cpu_ready_ms": 3390.0,
+          "first_frame_logged_ms": 329,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 57,
+            "nonvoluntary_ctxt_switches": 181
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 460.0,
+            "facts": 740.0,
+            "items": 780.0,
+            "biomes+env": 800.0,
+            "pack tables": 1070.0,
+            "atlas": 1130.0,
+            "collision+motion": 1610.0
+          }
+        },
+        "optimized": {
+          "wall_ready_ms": 3417.417,
+          "cpu_ready_ms": 3430.0,
+          "first_frame_logged_ms": 327,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 38,
+            "nonvoluntary_ctxt_switches": 610
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 470.0,
+            "facts": 780.0,
+            "items": 820.0,
+            "biomes+env": 840.0,
+            "pack tables": 1140.0,
+            "atlas": 1200.0,
+            "collision+motion": 1660.0
+          }
+        }
+      },
+      "load_after": [
+        7.017578125,
+        13.89306640625,
+        19.7861328125
+      ],
+      "pressure_after": {
+        "avg10": 0.26,
+        "avg60": 3.16,
+        "avg300": 13.79,
+        "total": 1595441487.0
+      },
+      "compilers_after": 2,
+      "gpu_after": [
+        "11, 4, 1166"
+      ]
+    },
+    {
+      "order": [
+        "optimized",
+        "baseline"
+      ],
+      "load_before": [
+        7.017578125,
+        13.89306640625,
+        19.7861328125
+      ],
+      "pressure_before": {
+        "avg10": 0.26,
+        "avg60": 3.16,
+        "avg300": 13.79,
+        "total": 1595443219.0
+      },
+      "compilers_before": 2,
+      "gpu_before": [
+        "11, 4, 1166"
+      ],
+      "measurements": {
+        "optimized": {
+          "wall_ready_ms": 3473.874,
+          "cpu_ready_ms": 3480.0,
+          "first_frame_logged_ms": 369,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 58,
+            "nonvoluntary_ctxt_switches": 1454
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 470.0,
+            "facts": 840.0,
+            "items": 890.0,
+            "biomes+env": 920.0,
+            "pack tables": 1220.0,
+            "atlas": 1290.0,
+            "collision+motion": 1800.0
+          }
+        },
+        "baseline": {
+          "wall_ready_ms": 3428.487,
+          "cpu_ready_ms": 3460.0,
+          "first_frame_logged_ms": 348,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 64,
+            "nonvoluntary_ctxt_switches": 132
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 510.0,
+            "facts": 820.0,
+            "items": 860.0,
+            "biomes+env": 880.0,
+            "pack tables": 1150.0,
+            "atlas": 1220.0,
+            "collision+motion": 1740.0
+          }
+        }
+      },
+      "load_after": [
+        6.77587890625,
+        13.728515625,
+        19.701171875
+      ],
+      "pressure_after": {
+        "avg10": 0.68,
+        "avg60": 2.92,
+        "avg300": 13.45,
+        "total": 1595580509.0
+      },
+      "compilers_after": 0,
+      "gpu_after": [
+        "23, 5, 1173"
+      ]
+    },
+    {
+      "order": [
+        "baseline",
+        "optimized"
+      ],
+      "load_before": [
+        6.77587890625,
+        13.728515625,
+        19.701171875
+      ],
+      "pressure_before": {
+        "avg10": 0.68,
+        "avg60": 2.92,
+        "avg300": 13.45,
+        "total": 1595580834.0
+      },
+      "compilers_before": 0,
+      "gpu_before": [
+        "23, 5, 1173"
+      ],
+      "measurements": {
+        "baseline": {
+          "wall_ready_ms": 3367.772,
+          "cpu_ready_ms": 3390.0,
+          "first_frame_logged_ms": 345,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 44,
+            "nonvoluntary_ctxt_switches": 135
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 460.0,
+            "facts": 750.0,
+            "items": 800.0,
+            "biomes+env": 820.0,
+            "pack tables": 1110.0,
+            "atlas": 1170.0,
+            "collision+motion": 1650.0
+          }
+        },
+        "optimized": {
+          "wall_ready_ms": 3280.597,
+          "cpu_ready_ms": 3320.0,
+          "first_frame_logged_ms": 334,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 55,
+            "nonvoluntary_ctxt_switches": 144
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 450.0,
+            "facts": 750.0,
+            "items": 790.0,
+            "biomes+env": 810.0,
+            "pack tables": 1070.0,
+            "atlas": 1150.0,
+            "collision+motion": 1610.0
+          }
+        }
+      },
+      "load_after": [
+        6.12109375,
+        13.3583984375,
+        19.5166015625
+      ],
+      "pressure_after": {
+        "avg10": 0.55,
+        "avg60": 2.67,
+        "avg300": 13.18,
+        "total": 1595628455.0
+      },
+      "compilers_after": 0,
+      "gpu_after": [
+        "0, 2, 1164"
+      ]
+    },
+    {
+      "order": [
+        "optimized",
+        "baseline"
+      ],
+      "load_before": [
+        6.12109375,
+        13.3583984375,
+        19.5166015625
+      ],
+      "pressure_before": {
+        "avg10": 0.55,
+        "avg60": 2.67,
+        "avg300": 13.18,
+        "total": 1595629086.0
+      },
+      "compilers_before": 0,
+      "gpu_before": [
+        "0, 1, 1164"
+      ],
+      "measurements": {
+        "optimized": {
+          "wall_ready_ms": 3446.629,
+          "cpu_ready_ms": 3470.0,
+          "first_frame_logged_ms": 364,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 55,
+            "nonvoluntary_ctxt_switches": 629
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 480.0,
+            "facts": 780.0,
+            "items": 820.0,
+            "biomes+env": 840.0,
+            "pack tables": 1110.0,
+            "atlas": 1190.0,
+            "collision+motion": 1670.0
+          }
+        },
+        "baseline": {
+          "wall_ready_ms": 3371.988,
+          "cpu_ready_ms": 3390.0,
+          "first_frame_logged_ms": 339,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 65,
+            "nonvoluntary_ctxt_switches": 197
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 480.0,
+            "facts": 810.0,
+            "items": 860.0,
+            "biomes+env": 870.0,
+            "pack tables": 1130.0,
+            "atlas": 1190.0,
+            "collision+motion": 1670.0
+          }
+        }
+      },
+      "load_after": [
+        5.791015625,
+        13.16943359375,
+        19.42236328125
+      ],
+      "pressure_after": {
+        "avg10": 0.39,
+        "avg60": 2.37,
+        "avg300": 12.83,
+        "total": 1595684633.0
+      },
+      "compilers_after": 2,
+      "gpu_after": [
+        "2, 1, 1131"
+      ]
+    },
+    {
+      "order": [
+        "baseline",
+        "optimized"
+      ],
+      "load_before": [
+        5.791015625,
+        13.16943359375,
+        19.42236328125
+      ],
+      "pressure_before": {
+        "avg10": 0.39,
+        "avg60": 2.37,
+        "avg300": 12.83,
+        "total": 1595685486.0
+      },
+      "compilers_before": 2,
+      "gpu_before": [
+        "2, 1, 1135"
+      ],
+      "measurements": {
+        "baseline": {
+          "wall_ready_ms": 3544.421,
+          "cpu_ready_ms": 3550.0,
+          "first_frame_logged_ms": 341,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 42,
+            "nonvoluntary_ctxt_switches": 170
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 470.0,
+            "facts": 840.0,
+            "items": 890.0,
+            "biomes+env": 910.0,
+            "pack tables": 1180.0,
+            "atlas": 1240.0,
+            "collision+motion": 1700.0
+          }
+        },
+        "optimized": {
+          "wall_ready_ms": 3328.83,
+          "cpu_ready_ms": 3350.0,
+          "first_frame_logged_ms": 352,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 48,
+            "nonvoluntary_ctxt_switches": 168
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 490.0,
+            "facts": 770.0,
+            "items": 820.0,
+            "biomes+env": 830.0,
+            "pack tables": 1130.0,
+            "atlas": 1200.0,
+            "collision+motion": 1660.0
+          }
+        }
+      },
+      "load_after": [
+        5.755859375,
+        12.9169921875,
+        19.27294921875
+      ],
+      "pressure_after": {
+        "avg10": 0.54,
+        "avg60": 2.16,
+        "avg300": 12.5,
+        "total": 1595781904.0
+      },
+      "compilers_after": 2,
+      "gpu_after": [
+        "2, 7, 1144"
+      ]
+    },
+    {
+      "order": [
+        "optimized",
+        "baseline"
+      ],
+      "load_before": [
+        5.755859375,
+        12.9169921875,
+        19.27294921875
+      ],
+      "pressure_before": {
+        "avg10": 0.54,
+        "avg60": 2.16,
+        "avg300": 12.5,
+        "total": 1595783571.0
+      },
+      "compilers_before": 2,
+      "gpu_before": [
+        "0, 0, 1146"
+      ],
+      "measurements": {
+        "optimized": {
+          "wall_ready_ms": 3426.6,
+          "cpu_ready_ms": 3450.0,
+          "first_frame_logged_ms": 336,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 59,
+            "nonvoluntary_ctxt_switches": 194
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 500.0,
+            "facts": 820.0,
+            "items": 870.0,
+            "biomes+env": 880.0,
+            "pack tables": 1190.0,
+            "atlas": 1260.0,
+            "collision+motion": 1750.0
+          }
+        },
+        "baseline": {
+          "wall_ready_ms": 3584.592,
+          "cpu_ready_ms": 3620.0,
+          "first_frame_logged_ms": 336,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 46,
+            "nonvoluntary_ctxt_switches": 291
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 480.0,
+            "facts": 780.0,
+            "items": 830.0,
+            "biomes+env": 850.0,
+            "pack tables": 1130.0,
+            "atlas": 1210.0,
+            "collision+motion": 1760.0
+          }
+        }
+      },
+      "load_after": [
+        5.53515625,
+        12.751953125,
+        19.18505859375
+      ],
+      "pressure_after": {
+        "avg10": 0.48,
+        "avg60": 1.99,
+        "avg300": 12.26,
+        "total": 1595842406.0
+      },
+      "compilers_after": 2,
+      "gpu_after": [
+        "2, 55, 1133"
+      ]
+    },
+    {
+      "order": [
+        "baseline",
+        "optimized"
+      ],
+      "load_before": [
+        5.53515625,
+        12.751953125,
+        19.18505859375
+      ],
+      "pressure_before": {
+        "avg10": 0.39,
+        "avg60": 1.92,
+        "avg300": 12.17,
+        "total": 1595843049.0
+      },
+      "compilers_before": 2,
+      "gpu_before": [
+        "0, 1, 1133"
+      ],
+      "measurements": {
+        "baseline": {
+          "wall_ready_ms": 3488.746,
+          "cpu_ready_ms": 3520.0,
+          "first_frame_logged_ms": 343,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 74,
+            "nonvoluntary_ctxt_switches": 162
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 460.0,
+            "facts": 800.0,
+            "items": 850.0,
+            "biomes+env": 870.0,
+            "pack tables": 1150.0,
+            "atlas": 1220.0,
+            "collision+motion": 1750.0
+          }
+        },
+        "optimized": {
+          "wall_ready_ms": 3326.974,
+          "cpu_ready_ms": 3360.0,
+          "first_frame_logged_ms": 356,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 44,
+            "nonvoluntary_ctxt_switches": 238
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 480.0,
+            "facts": 750.0,
+            "items": 790.0,
+            "biomes+env": 810.0,
+            "pack tables": 1070.0,
+            "atlas": 1150.0,
+            "collision+motion": 1630.0
+          }
+        }
+      },
+      "load_after": [
+        5.21875,
+        12.44677734375,
+        19.01611328125
+      ],
+      "pressure_after": {
+        "avg10": 0.45,
+        "avg60": 1.8,
+        "avg300": 11.94,
+        "total": 1595918550.0
+      },
+      "compilers_after": 2,
+      "gpu_after": [
+        "0, 37, 1134"
+      ]
+    },
+    {
+      "order": [
+        "optimized",
+        "baseline"
+      ],
+      "load_before": [
+        5.21875,
+        12.44677734375,
+        19.01611328125
+      ],
+      "pressure_before": {
+        "avg10": 0.45,
+        "avg60": 1.8,
+        "avg300": 11.94,
+        "total": 1595921516.0
+      },
+      "compilers_before": 2,
+      "gpu_before": [
+        "0, 1, 1129"
+      ],
+      "measurements": {
+        "optimized": {
+          "wall_ready_ms": 3596.676,
+          "cpu_ready_ms": 3590.0,
+          "first_frame_logged_ms": 404,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 26,
+            "nonvoluntary_ctxt_switches": 228
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 460.0,
+            "facts": 770.0,
+            "items": 810.0,
+            "biomes+env": 840.0,
+            "pack tables": 1120.0,
+            "atlas": 1190.0,
+            "collision+motion": 1710.0
+          }
+        },
+        "baseline": {
+          "wall_ready_ms": 3508.234,
+          "cpu_ready_ms": 3540.0,
+          "first_frame_logged_ms": 344,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 58,
+            "nonvoluntary_ctxt_switches": 313
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 530.0,
+            "facts": 830.0,
+            "items": 880.0,
+            "biomes+env": 900.0,
+            "pack tables": 1170.0,
+            "atlas": 1240.0,
+            "collision+motion": 1710.0
+          }
+        }
+      },
+      "load_after": [
+        7.28369140625,
+        12.7548828125,
+        19.08056640625
+      ],
+      "pressure_after": {
+        "avg10": 1.46,
+        "avg60": 1.86,
+        "avg300": 11.67,
+        "total": 1596152053.0
+      },
+      "compilers_after": 2,
+      "gpu_after": [
+        "10, 2, 1147"
+      ]
+    },
+    {
+      "order": [
+        "baseline",
+        "optimized"
+      ],
+      "load_before": [
+        7.28369140625,
+        12.7548828125,
+        19.08056640625
+      ],
+      "pressure_before": {
+        "avg10": 1.46,
+        "avg60": 1.86,
+        "avg300": 11.67,
+        "total": 1596152987.0
+      },
+      "compilers_before": 2,
+      "gpu_before": [
+        "10, 2, 1147"
+      ],
+      "measurements": {
+        "baseline": {
+          "wall_ready_ms": 3476.97,
+          "cpu_ready_ms": 3490.0,
+          "first_frame_logged_ms": 357,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 50,
+            "nonvoluntary_ctxt_switches": 156
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 540.0,
+            "facts": 830.0,
+            "items": 870.0,
+            "biomes+env": 890.0,
+            "pack tables": 1150.0,
+            "atlas": 1210.0,
+            "collision+motion": 1680.0
+          }
+        },
+        "optimized": {
+          "wall_ready_ms": 5839.513,
+          "cpu_ready_ms": 5060.0,
+          "first_frame_logged_ms": 443,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 112,
+            "nonvoluntary_ctxt_switches": 2517
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 710.0,
+            "facts": 1270.0,
+            "items": 1330.0,
+            "biomes+env": 1370.0,
+            "pack tables": 1920.0,
+            "atlas": 2150.0,
+            "collision+motion": 3250.0
+          }
+        }
+      },
+      "load_after": [
+        7.89990234375,
+        12.69921875,
+        18.994140625
+      ],
+      "pressure_after": {
+        "avg10": 9.84,
+        "avg60": 3.51,
+        "avg300": 11.69,
+        "total": 1597714400.0
+      },
+      "compilers_after": 3,
+      "gpu_after": [
+        "12, 3, 1150"
+      ]
+    },
+    {
+      "order": [
+        "optimized",
+        "baseline"
+      ],
+      "load_before": [
+        7.89990234375,
+        12.69921875,
+        18.994140625
+      ],
+      "pressure_before": {
+        "avg10": 9.84,
+        "avg60": 3.51,
+        "avg300": 11.69,
+        "total": 1597812617.0
+      },
+      "compilers_before": 3,
+      "gpu_before": [
+        "0, 0, 1147"
+      ],
+      "measurements": {
+        "optimized": {
+          "wall_ready_ms": 6799.939,
+          "cpu_ready_ms": 5440.0,
+          "first_frame_logged_ms": 506,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 30,
+            "nonvoluntary_ctxt_switches": 3062
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 1140.0,
+            "facts": 1740.0,
+            "items": 1820.0,
+            "biomes+env": 1940.0,
+            "pack tables": 2460.0,
+            "atlas": 2700.0,
+            "collision+motion": 3820.0
+          }
+        },
+        "baseline": {
+          "wall_ready_ms": 4470.835,
+          "cpu_ready_ms": 4270.0,
+          "first_frame_logged_ms": 524,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 26,
+            "nonvoluntary_ctxt_switches": 451
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 530.0,
+            "facts": 840.0,
+            "items": 880.0,
+            "biomes+env": 910.0,
+            "pack tables": 1220.0,
+            "atlas": 1300.0,
+            "collision+motion": 1890.0
+          }
+        }
+      },
+      "load_after": [
+        9.529296875,
+        12.82861328125,
+        18.93505859375
+      ],
+      "pressure_after": {
+        "avg10": 16.23,
+        "avg60": 6.94,
+        "avg300": 12.15,
+        "total": 1600420370.0
+      },
+      "compilers_after": 4,
+      "gpu_after": [
+        "0, 0, 1145"
+      ]
+    },
+    {
+      "order": [
+        "baseline",
+        "optimized"
+      ],
+      "load_before": [
+        9.529296875,
+        12.82861328125,
+        18.93505859375
+      ],
+      "pressure_before": {
+        "avg10": 16.23,
+        "avg60": 6.94,
+        "avg300": 12.15,
+        "total": 1600518428.0
+      },
+      "compilers_before": 4,
+      "gpu_before": [
+        "0, 0, 1145"
+      ],
+      "measurements": {
+        "baseline": {
+          "wall_ready_ms": 5513.988,
+          "cpu_ready_ms": 4870.0,
+          "first_frame_logged_ms": 823,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 99,
+            "nonvoluntary_ctxt_switches": 972
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 830.0,
+            "facts": 1340.0,
+            "items": 1410.0,
+            "biomes+env": 1440.0,
+            "pack tables": 1860.0,
+            "atlas": 2010.0,
+            "collision+motion": 2750.0
+          }
+        },
+        "optimized": {
+          "wall_ready_ms": 8632.408,
+          "cpu_ready_ms": 5740.0,
+          "first_frame_logged_ms": 840,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 28,
+            "nonvoluntary_ctxt_switches": 6017
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 1320.0,
+            "facts": 2470.0,
+            "items": 2570.0,
+            "biomes+env": 2610.0,
+            "pack tables": 3320.0,
+            "atlas": 3570.0,
+            "collision+motion": 4870.0
+          }
+        }
+      },
+      "load_after": [
+        12.9521484375,
+        13.39892578125,
+        19.02197265625
+      ],
+      "pressure_after": {
+        "avg10": 32.24,
+        "avg60": 12.89,
+        "avg300": 13.19,
+        "total": 1605647769.0
+      },
+      "compilers_after": 4,
+      "gpu_after": [
+        "0, 1, 1138"
+      ]
+    },
+    {
+      "order": [
+        "optimized",
+        "baseline"
+      ],
+      "load_before": [
+        12.9521484375,
+        13.39892578125,
+        19.02197265625
+      ],
+      "pressure_before": {
+        "avg10": 32.24,
+        "avg60": 12.89,
+        "avg300": 13.19,
+        "total": 1605707923.0
+      },
+      "compilers_before": 4,
+      "gpu_before": [
+        "0, 1, 1138"
+      ],
+      "measurements": {
+        "optimized": {
+          "wall_ready_ms": 4149.611,
+          "cpu_ready_ms": 3800.0,
+          "first_frame_logged_ms": 342,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 97,
+            "nonvoluntary_ctxt_switches": 796
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 780.0,
+            "facts": 1090.0,
+            "items": 1150.0,
+            "biomes+env": 1180.0,
+            "pack tables": 1490.0,
+            "atlas": 1570.0,
+            "collision+motion": 2090.0
+          }
+        },
+        "baseline": {
+          "wall_ready_ms": 3545.525,
+          "cpu_ready_ms": 3530.0,
+          "first_frame_logged_ms": 327,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 62,
+            "nonvoluntary_ctxt_switches": 704
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 490.0,
+            "facts": 800.0,
+            "items": 840.0,
+            "biomes+env": 860.0,
+            "pack tables": 1120.0,
+            "atlas": 1190.0,
+            "collision+motion": 1750.0
+          }
+        }
+      },
+      "load_after": [
+        11.48876953125,
+        13.072265625,
+        18.85498046875
+      ],
+      "pressure_after": {
+        "avg10": 17.51,
+        "avg60": 12.1,
+        "avg300": 13.02,
+        "total": 1605987013.0
+      },
+      "compilers_after": 2,
+      "gpu_after": [
+        "23, 6, 1145"
+      ]
+    },
+    {
+      "order": [
+        "baseline",
+        "optimized"
+      ],
+      "load_before": [
+        11.48876953125,
+        13.072265625,
+        18.85498046875
+      ],
+      "pressure_before": {
+        "avg10": 17.51,
+        "avg60": 12.1,
+        "avg300": 13.02,
+        "total": 1605988061.0
+      },
+      "compilers_before": 2,
+      "gpu_before": [
+        "23, 6, 1145"
+      ],
+      "measurements": {
+        "baseline": {
+          "wall_ready_ms": 3427.019,
+          "cpu_ready_ms": 3420.0,
+          "first_frame_logged_ms": 370,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 49,
+            "nonvoluntary_ctxt_switches": 763
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 490.0,
+            "facts": 770.0,
+            "items": 810.0,
+            "biomes+env": 830.0,
+            "pack tables": 1090.0,
+            "atlas": 1160.0,
+            "collision+motion": 1610.0
+          }
+        },
+        "optimized": {
+          "wall_ready_ms": 3372.512,
+          "cpu_ready_ms": 3390.0,
+          "first_frame_logged_ms": 342,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 39,
+            "nonvoluntary_ctxt_switches": 929
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 540.0,
+            "facts": 840.0,
+            "items": 890.0,
+            "biomes+env": 910.0,
+            "pack tables": 1180.0,
+            "atlas": 1230.0,
+            "collision+motion": 1680.0
+          }
+        }
+      },
+      "load_after": [
+        10.80859375,
+        12.90478515625,
+        18.76953125
+      ],
+      "pressure_after": {
+        "avg10": 8.17,
+        "avg60": 10.65,
+        "avg300": 12.68,
+        "total": 1606075106.0
+      },
+      "compilers_after": 0,
+      "gpu_after": [
+        "22, 5, 1137"
+      ]
+    },
+    {
+      "order": [
+        "optimized",
+        "baseline"
+      ],
+      "load_before": [
+        10.80859375,
+        12.90478515625,
+        18.76953125
+      ],
+      "pressure_before": {
+        "avg10": 8.17,
+        "avg60": 10.65,
+        "avg300": 12.68,
+        "total": 1606078151.0
+      },
+      "compilers_before": 0,
+      "gpu_before": [
+        "22, 5, 1142"
+      ],
+      "measurements": {
+        "optimized": {
+          "wall_ready_ms": 3314.012,
+          "cpu_ready_ms": 3320.0,
+          "first_frame_logged_ms": 326,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 41,
+            "nonvoluntary_ctxt_switches": 156
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 460.0,
+            "facts": 740.0,
+            "items": 780.0,
+            "biomes+env": 800.0,
+            "pack tables": 1110.0,
+            "atlas": 1170.0,
+            "collision+motion": 1650.0
+          }
+        },
+        "baseline": {
+          "wall_ready_ms": 3291.522,
+          "cpu_ready_ms": 3310.0,
+          "first_frame_logged_ms": 343,
+          "switches_at_ready": {
+            "voluntary_ctxt_switches": 79,
+            "nonvoluntary_ctxt_switches": 172
+          },
+          "renderer": {
+            "arena_bytes": 29360128,
+            "backend": "Vulkan",
+            "device_type": "discrete",
+            "drawn_sections": 0,
+            "driver": "NVIDIA 615.71.09",
+            "gpu": "NVIDIA GeForce RTX 4060",
+            "gpu_allocated_bytes": 288481840,
+            "gpu_reserved_bytes": 671088640,
+            "present_mode": "Immediate",
+            "resident_sections": 0,
+            "section_vertex_bytes": 0,
+            "size": [
+              1280,
+              720
+            ],
+            "uploaded_bytes": 0,
+            "vendor": "nvidia"
+          },
+          "client_log_cumulative_stage_ms": {
+            "assets": 460.0,
+            "facts": 740.0,
+            "items": 780.0,
+            "biomes+env": 800.0,
+            "pack tables": 1060.0,
+            "atlas": 1120.0,
+            "collision+motion": 1580.0
+          }
+        }
+      },
+      "load_after": [
+        10.26318359375,
+        12.7568359375,
+        18.68994140625
+      ],
+      "pressure_after": {
+        "avg10": 3.79,
+        "avg60": 9.35,
+        "avg300": 12.34,
+        "total": 1606118257.0
+      },
+      "compilers_after": 0,
+      "gpu_after": [
+        "2, 3, 1140"
+      ]
+    }
+  ],
+  "results_wall_ms": {
+    "baseline": {
+      "samples_ms": [
+        3394.473,
+        3405.763,
+        3382.47,
+        3296.695,
+        3457.682,
+        3394.024,
+        3366.126,
+        3428.487,
+        3367.772,
+        3371.988,
+        3544.421,
+        3584.592,
+        3488.746,
+        3508.234,
+        3476.97,
+        4470.835,
+        5513.988,
+        3545.525,
+        3427.019,
+        3291.522
+      ],
+      "min_ms": 3291.522,
+      "p10_ms": 3296.695,
+      "median_ms": 3427.753,
+      "p90_ms": 3584.592,
+      "max_ms": 5513.988,
+      "mean_ms": 3585.867,
+      "stdev_ms": 515.906
+    },
+    "optimized": {
+      "samples_ms": [
+        3412.863,
+        3396.814,
+        3403.492,
+        3340.182,
+        3217.327,
+        3231.266,
+        3417.417,
+        3473.874,
+        3280.597,
+        3446.629,
+        3328.83,
+        3426.6,
+        3326.974,
+        3596.676,
+        5839.513,
+        6799.939,
+        8632.408,
+        4149.611,
+        3372.512,
+        3314.012
+      ],
+      "min_ms": 3217.327,
+      "p10_ms": 3231.266,
+      "median_ms": 3408.177,
+      "p90_ms": 5839.513,
+      "max_ms": 8632.408,
+      "mean_ms": 3970.377,
+      "stdev_ms": 1434.352
+    }
+  },
+  "results_cpu_ms": {
+    "baseline": {
+      "samples_ms": [
+        3420.0,
+        3430.0,
+        3410.0,
+        3320.0,
+        3470.0,
+        3420.0,
+        3390.0,
+        3460.0,
+        3390.0,
+        3390.0,
+        3550.0,
+        3620.0,
+        3520.0,
+        3540.0,
+        3490.0,
+        4270.0,
+        4870.0,
+        3530.0,
+        3420.0,
+        3310.0
+      ],
+      "min_ms": 3310.0,
+      "p10_ms": 3320.0,
+      "median_ms": 3445.0,
+      "p90_ms": 3620.0,
+      "max_ms": 4870.0,
+      "mean_ms": 3561.0,
+      "stdev_ms": 366.691
+    },
+    "optimized": {
+      "samples_ms": [
+        3430.0,
+        3420.0,
+        3430.0,
+        3350.0,
+        3240.0,
+        3250.0,
+        3430.0,
+        3480.0,
+        3320.0,
+        3470.0,
+        3350.0,
+        3450.0,
+        3360.0,
+        3590.0,
+        5060.0,
+        5440.0,
+        5740.0,
+        3800.0,
+        3390.0,
+        3320.0
+      ],
+      "min_ms": 3240.0,
+      "p10_ms": 3250.0,
+      "median_ms": 3430.0,
+      "p90_ms": 5060.0,
+      "max_ms": 5740.0,
+      "mean_ms": 3716.0,
+      "stdev_ms": 749.606
+    }
+  },
+  "logged_first_frame_ms": {
+    "baseline": {
+      "samples_ms": [
+        362,
+        350,
+        325,
+        347,
+        361,
+        333,
+        329,
+        348,
+        345,
+        339,
+        341,
+        336,
+        343,
+        344,
+        357,
+        524,
+        823,
+        327,
+        370,
+        343
+      ],
+      "min_ms": 325,
+      "p10_ms": 327,
+      "median_ms": 344.5,
+      "p90_ms": 370,
+      "max_ms": 823,
+      "mean_ms": 377.35,
+      "stdev_ms": 112.907
+    },
+    "optimized": {
+      "samples_ms": [
+        344,
+        370,
+        356,
+        340,
+        326,
+        332,
+        327,
+        369,
+        334,
+        364,
+        352,
+        336,
+        356,
+        404,
+        443,
+        506,
+        840,
+        342,
+        342,
+        326
+      ],
+      "min_ms": 326,
+      "p10_ms": 326,
+      "median_ms": 348.0,
+      "p90_ms": 443,
+      "max_ms": 840,
+      "mean_ms": 385.45,
+      "stdev_ms": 115.763
+    }
+  },
+  "paired_wall_delta_ms": {
+    "samples_ms": [
+      18.39,
+      -8.949,
+      21.022,
+      43.487,
+      -240.355,
+      -162.758,
+      51.291,
+      45.387,
+      -87.175,
+      74.641,
+      -215.591,
+      -157.992,
+      -161.772,
+      88.442,
+      2362.543,
+      2329.104,
+      3118.42,
+      604.086,
+      -54.507,
+      22.49
+    ],
+    "min_ms": -240.355,
+    "p10_ms": -215.591,
+    "median_ms": 21.756,
+    "p90_ms": 2329.104,
+    "max_ms": 3118.42,
+    "mean_ms": 384.51,
+    "stdev_ms": 982.816
+  },
+  "paired_cpu_delta_ms": {
+    "samples_ms": [
+      10.0,
+      -10.0,
+      20.0,
+      30.0,
+      -230.0,
+      -170.0,
+      40.0,
+      20.0,
+      -70.0,
+      80.0,
+      -200.0,
+      -170.0,
+      -160.0,
+      50.0,
+      1570.0,
+      1170.0,
+      870.0,
+      270.0,
+      -30.0,
+      10.0
+    ],
+    "min_ms": -230.0,
+    "p10_ms": -200.0,
+    "median_ms": 15.0,
+    "p90_ms": 870.0,
+    "max_ms": 1570.0,
+    "mean_ms": 155.0,
+    "stdev_ms": 480.005
+  },
+  "uncertainty_wall": {
+    "method": "paired percentile bootstrap; iid-pair assumption; exploratory",
+    "seed": 20261017,
+    "resamples": 20000,
+    "mean_95pct_ci_ms": [
+      11.465,
+      839.592
+    ],
+    "median_95pct_ci_ms": [
+      -70.841,
+      62.966
+    ],
+    "fraction_negative": 0.4
+  },
+  "uncertainty_cpu": {
+    "method": "paired percentile bootstrap; iid-pair assumption; exploratory",
+    "seed": 20261017,
+    "resamples": 20000,
+    "mean_95pct_ci_ms": [
+      -24.0,
+      377.5
+    ],
+    "median_95pct_ci_ms": [
+      -50.0,
+      45.0
+    ],
+    "fraction_negative": 0.4
+  },
+  "system_load_after": [
+    9.60107421875,
+    12.578125,
+    18.60009765625
+  ],
+  "end_utc": "2026-10-17T00:29:53.247718+00:00"
+}

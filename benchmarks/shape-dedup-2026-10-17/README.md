@@ -152,3 +152,61 @@ Building and launching matched GPU clients under heavy concurrent compilation
 and graphical desktop activity would introduce further uncontrolled variance.
 **Full-client time-to-ready remains unmeasured.** The established 93.326 ms
 versus 0.992 ms inner-loop result remains a separate measurement.
+
+## Matched full native-client title-ready experiment
+
+Two independently compiled `fast`-profile **full Horizon clients** were built
+from `f535d1b4` and `f6f5d4cb` with separate `CARGO_TARGET_DIR` folders,
+using the same 26.3 resource export. The new
+[`tools/profile_full_client_startup.py`](../../../tools/profile_full_client_startup.py)
+launches the actual client with `--offscreen --no-pause --control-socket` and
+waits for the same `screen == title` plus renderer readiness check as
+`tools/perf_bench.py`. Every run uses a fresh temporary game directory,
+`HORIZON_NO_AUDIO=1`, classic menu style, identical graphics hardware, and
+the same six logical CPUs (2,3,4,5,6,7). Prebuilt executables are used so
+compilation does not occur inside the timed launch. The profiler records
+process wall and CPU time at readiness, the renderer, cumulative client load
+stages, compiler counts, GPU utilisation, pressure, and pairing order.
+
+```sh
+CARGO_BUILD_JOBS=3 CARGO_TARGET_DIR=/path/to/baseline-target cargo build --offline --profile fast -p horizon-client --bin horizon-client
+CARGO_BUILD_JOBS=3 CARGO_TARGET_DIR=/path/to/optimized-target cargo build --offline --profile fast -p horizon-client --bin horizon-client
+python3 tools/profile_full_client_startup.py --resources /path/to/26.3 \
+  --baseline-binary /path/to/baseline-target/fast/horizon-client \
+  --optimized-binary /path/to/optimized-target/fast/horizon-client \
+  --affinity 2,3,4,5,6,7 --warmups 4 --runs 20 --pause-ms 200 \
+  --timeout 45 --output benchmarks/shape-dedup-2026-10-17/full-client-title-paired.json
+```
+
+The complete successful 20-pair run, machine and GPU identity, hashes,
+per-pair renderer and load data are in
+[`full-client-title-paired.json`](full-client-title-paired.json).
+Baseline client SHA-256: `52c150114d4aedd4208a75629446a76c5928e4fc1b9b770124a0214b79e8d407`.
+Indexed client SHA-256: `f5ccfe0ae53ad8c7e5a413f2f2dde9ff8b0f5238f499c5f78c084b01f92d0702`.
+
+| Full client (20 pairs) | Original | Indexed |
+| --- | ---: | ---: |
+| Median title-ready wall time | 3,427.75 ms | 3,408.18 ms |
+| Median CPU time at title-ready | 3,445 ms | 3,430 ms |
+| Median first-frame render phase (log) | 344.5 ms | 348 ms |
+
+The **paired** indexed-minus-original wall-time median was **+21.756 ms**;
+an exploratory 20,000-resample paired bootstrap gave a 95% median interval
+of **[-70.841, +62.966] ms**, containing zero. The paired mean was dominated
+by the last runs: external compilers restarted after the first six pairs.
+Eight pairs had zero compilers at both measurement boundaries; their paired
+median was **+4.72 ms**, and their bootstrapped mean interval was approximately
+**[-121.06, +13.15] ms**. This is a post-hoc diagnostic subgroup, not
+a separately randomised experiment. Neither supports a repeatable whole-client
+startup gain. Variance is far larger than the 88–93 ms isolated lookup saving.
+
+A second 24-pair replication with three warmups was attempted after compiler
+activity subsided. It could not finish: the **indexed client exited after
+Vulkan initialisation with `Horizon: Parent device is lost`** during a late
+startup iteration, before title readiness. The failed attempt has no complete
+paired distribution and is excluded from performance estimates. The profiler
+now saves a diagnostic record when a later GPU failure interrupts a run.
+Repeated Vulkan device loss under the active desktop session is the concrete
+blocker to presenting a validated low-contention replication. The completed
+20-pair experiment establishes that actual startup was measured but **does
+not establish any reliable positive or negative startup effect**.
