@@ -1,0 +1,284 @@
+{
+  "scope": "fast-profile; Assets::load plus item preparation, 12 fresh processes per condition",
+  "source_commit": "f535d1b4",
+  "cached_commit": "568a38b5",
+  "run_date": "2026-10-17",
+  "results": {
+    "original": {
+      "cache": "warm",
+      "scope": "Assets::load plus item renderer preparation; not time to first frame",
+      "binary": "../assets-registry-baseline-597/target/fast/examples/model_library_bench",
+      "resources": ".benchmark-registry-final",
+      "repeats": 12,
+      "metrics": {
+        "block_ms": {
+          "median_ms": 463.542,
+          "min_ms": 449.287,
+          "max_ms": 489.78,
+          "mad_ms": 9.666,
+          "samples_ms": [
+            450.414,
+            464.923,
+            489.78,
+            480.686,
+            454.008,
+            479.179,
+            462.161,
+            459.381,
+            449.287,
+            470.922,
+            453.745,
+            468.171
+          ]
+        },
+        "item_ms": {
+          "median_ms": 35.038,
+          "min_ms": 33.499,
+          "max_ms": 41.02,
+          "mad_ms": 0.729,
+          "samples_ms": [
+            35.749,
+            33.67,
+            35.066,
+            34.627,
+            33.499,
+            34.79,
+            35.01,
+            41.02,
+            37.225,
+            39.432,
+            35.537,
+            34.291
+          ]
+        },
+        "total_ms": {
+          "median_ms": 499.497,
+          "min_ms": 486.164,
+          "max_ms": 524.847,
+          "mad_ms": 11.423,
+          "samples_ms": [
+            486.164,
+            498.593,
+            524.847,
+            515.314,
+            487.508,
+            513.969,
+            497.171,
+            500.401,
+            486.513,
+            510.354,
+            489.283,
+            502.462
+          ]
+        }
+      }
+    },
+    "direct_hashmap": {
+      "cache": "warm",
+      "scope": "Assets::load plus item renderer preparation; not time to first frame",
+      "binary": "target/fast/examples/model_library_bench",
+      "resources": ".benchmark-registry-final",
+      "repeats": 12,
+      "metrics": {
+        "block_ms": {
+          "median_ms": 485.102,
+          "min_ms": 464.897,
+          "max_ms": 509.619,
+          "mad_ms": 15.042,
+          "samples_ms": [
+            509.619,
+            485.167,
+            464.897,
+            474.143,
+            472.522,
+            464.906,
+            485.038,
+            506.847,
+            475.667,
+            504.856,
+            488.305,
+            502.606
+          ]
+        },
+        "item_ms": {
+          "median_ms": 35.276,
+          "min_ms": 33.68,
+          "max_ms": 45.057,
+          "mad_ms": 0.573,
+          "samples_ms": [
+            34.992,
+            45.057,
+            35.945,
+            33.68,
+            35.627,
+            35.772,
+            34.625,
+            35.458,
+            35.094,
+            37.333,
+            34.079,
+            34.972
+          ]
+        },
+        "total_ms": {
+          "median_ms": 521.024,
+          "min_ms": 500.679,
+          "max_ms": 544.611,
+          "mad_ms": 14.877,
+          "samples_ms": [
+            544.611,
+            530.224,
+            500.842,
+            507.823,
+            508.15,
+            500.679,
+            519.663,
+            542.306,
+            510.762,
+            542.189,
+            522.384,
+            537.578
+          ]
+        }
+      }
+    },
+    "cached_cold": {
+      "cache": "cold",
+      "scope": "Assets::load plus item renderer preparation; not time to first frame",
+      "binary": "../assets-registry-cached-597/target/fast/examples/model_library_bench",
+      "resources": ".benchmark-registry-final",
+      "repeats": 12,
+      "metrics": {
+        "block_ms": {
+          "median_ms": 478.352,
+          "min_ms": 467.486,
+          "max_ms": 496.691,
+          "mad_ms": 7.092,
+          "samples_ms": [
+            490.113,
+            482.672,
+            496.691,
+            478.426,
+            478.278,
+            471.23,
+            467.486,
+            474.695,
+            488.011,
+            471.29,
+            471.116,
+            484.962
+          ]
+        },
+        "item_ms": {
+          "median_ms": 35.098,
+          "min_ms": 34.198,
+          "max_ms": 38.303,
+          "mad_ms": 0.532,
+          "samples_ms": [
+            34.53,
+            35.219,
+            35.245,
+            34.938,
+            34.602,
+            34.198,
+            36.753,
+            36.172,
+            34.507,
+            34.991,
+            38.303,
+            35.205
+          ]
+        },
+        "total_ms": {
+          "median_ms": 513.121,
+          "min_ms": 504.239,
+          "max_ms": 531.936,
+          "mad_ms": 6.943,
+          "samples_ms": [
+            524.643,
+            517.891,
+            531.936,
+            513.363,
+            512.88,
+            505.428,
+            504.239,
+            510.868,
+            522.519,
+            506.282,
+            509.419,
+            520.167
+          ]
+        }
+      }
+    },
+    "cached_warm": {
+      "cache": "warm",
+      "scope": "Assets::load plus item renderer preparation; not time to first frame",
+      "binary": "../assets-registry-cached-597/target/fast/examples/model_library_bench",
+      "resources": ".benchmark-registry-final",
+      "repeats": 12,
+      "metrics": {
+        "block_ms": {
+          "median_ms": 389.453,
+          "min_ms": 370.232,
+          "max_ms": 438.835,
+          "mad_ms": 16.187,
+          "samples_ms": [
+            375.143,
+            377.399,
+            388.265,
+            430.382,
+            390.642,
+            403.631,
+            438.835,
+            370.232,
+            427.436,
+            371.389,
+            408.857,
+            381.838
+          ]
+        },
+        "item_ms": {
+          "median_ms": 37.035,
+          "min_ms": 34.331,
+          "max_ms": 45.172,
+          "mad_ms": 1.243,
+          "samples_ms": [
+            35.19,
+            34.987,
+            37.676,
+            37.037,
+            43.85,
+            36.495,
+            45.172,
+            34.331,
+            37.033,
+            37.572,
+            34.868,
+            37.352
+          ]
+        },
+        "total_ms": {
+          "median_ms": 430.217,
+          "min_ms": 404.564,
+          "max_ms": 484.007,
+          "mad_ms": 18.857,
+          "samples_ms": [
+            410.333,
+            412.386,
+            425.942,
+            467.419,
+            434.492,
+            440.127,
+            484.007,
+            404.564,
+            464.47,
+            408.961,
+            443.725,
+            419.191
+          ]
+        }
+      }
+    }
+  }
+}

@@ -590,7 +590,7 @@ mod registry_cache_tests {
         from_source(&root.0, FIRST).unwrap();
         let cache = root.0.join(REGISTRY_CACHE_NAME);
         let original_bytes = fs::read(&cache).unwrap();
-        // Replacing a name with another equally long name may leave valid NBT.
+        // Replacing a name with another equally long name may leave valid binary framing.
         let mut changed = original_bytes.clone();
         for match_at in changed
             .windows(5)
@@ -612,6 +612,25 @@ mod registry_cache_tests {
                 &original(FIRST).unwrap(),
             );
         }
+        // A well-framed payload with a recomputed checksum must still pass
+        // the registry's name/default consistency validation.
+        let mut inconsistent = original_bytes;
+        let payload_at = REGISTRY_CACHE_MAGIC.len() + 64;
+        let name_at = inconsistent[payload_at..]
+            .windows(5)
+            .position(|part| part == b"stone")
+            .unwrap()
+            + payload_at;
+        inconsistent[name_at..name_at + 5].copy_from_slice(b"stove");
+        let payload_checksum = Sha256::digest(&inconsistent[payload_at..]);
+        inconsistent[REGISTRY_CACHE_MAGIC.len() + 32..payload_at]
+            .copy_from_slice(payload_checksum.as_slice());
+        fs::write(&cache, inconsistent).unwrap();
+        assert!(cached_registry(&root.0, &Sha256::digest(FIRST)).is_none());
+        same_registry(
+            &from_source(&root.0, FIRST).unwrap(),
+            &original(FIRST).unwrap(),
+        );
     }
 
     #[test]
