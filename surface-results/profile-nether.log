@@ -1,0 +1,12 @@
+Creating experiment directory /srv/bob-data/horizon-surface-7deb9745/nether.er (Process ID: 392910) ...
+loaded resources in 1.49s
+seeded generator in 90.13ms
+warmup_ms 468.081921
+PROFILE_MEASURE_START 2.044320542
+PROFILE_TERRAIN_END 4.660493829
+generated 576 proto chunks with 1 threads in 2.62s: 220.2 chunks/s (4.5 ms/chunk/thread)
+  cpu time 4.5 ms/chunk
+PROFILE_WALL_MS_CHUNK 4.541907
+PROFILE_STAGES {"biomes":0.12941922743055556,"carvers":0.29567884375,"chunks":576,"noise":0.9345455277777778,"structures":0.1287240625,"surface":3.034734180555555,"threads":1,"wall_ms_chunk":4.541907416666667}
+decorated 484 chunks in 258.33ms: 1873.6 chunks/s; feature roots placed 9730, unsupported 0, failed 0
+PROFILE_MEASURE_END 4.918897740

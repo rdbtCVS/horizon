@@ -1,0 +1,19 @@
+   Compiling horizon-world v0.1.0 (/srv/bob-data/.t3/worktrees/horizon/t3-7deb9745/crates/horizon-world)
+warning: unused import: `collections::BTreeMap`
+  --> crates/horizon-world/examples/chunkgen_profile.rs:18:5
+   |
+18 |     collections::BTreeMap,
+   |     ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `glyph` is never used
+   --> crates/horizon-world/examples/chunkgen_profile.rs:240:4
+    |
+240 | fn glyph(name: &str) -> char {
+    |    ^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `horizon-world` (example "chunkgen_profile") generated 2 warnings (run `cargo fix --example "chunkgen_profile" -p horizon-world` to apply 1 suggestion)
+    Finished `fast` profile [optimized] target(s) in 19.90s

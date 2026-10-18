@@ -1,0 +1,55 @@
+{
+  "baseline": "eb3789038e3184c98a1459fe638947200217d360",
+  "dependency": "https://github.com/ludovic111/horizon/pull/796",
+  "terrain_size": 16,
+  "terrain_count": 256,
+  "decoration_count": 196,
+  "initialization": {
+    "size": 9,
+    "center_offset": [
+      64,
+      64
+    ]
+  },
+  "primary": {
+    "seed": 12345,
+    "center": [
+      0,
+      0
+    ],
+    "dimensions": [
+      "overworld",
+      "the_nether",
+      "the_end"
+    ],
+    "workers": [
+      1,
+      4
+    ]
+  },
+  "secondary": {
+    "seed": -1,
+    "center": [
+      32,
+      -32
+    ],
+    "dimensions": [
+      "overworld"
+    ],
+    "workers": [
+      1,
+      4
+    ]
+  },
+  "qualification": "one discarded pair then five alternating baseline/candidate pairs; exact terrain elapsed / 256; combined same denominator; no concurrent builds or benchmarks",
+  "qualification_threshold_history": [
+    {
+      "percent": 5,
+      "source": "initial task instructions"
+    },
+    {
+      "percent": 3,
+      "source": "user follow-up: 3% is good enough; after primary gate and before matrix/correctness completion"
+    }
+  ]
+}

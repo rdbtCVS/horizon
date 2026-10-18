@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/srv/bob-data/.t3/worktrees/horizon/t3-7deb9745/surface-results/validate_java.py", line 25, in <module>
+    namespace['main']()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/srv/bob-data/.t3/worktrees/horizon/t3-7deb9745/tools/test_material_stage_parity.py", line 134, in main
+    fixture_paths=[inputs,*preset_exports,build/'facts-client.json',build/'facts-server.json',*[build/(name+'.json') for name in bundle]];tested_fixtures=base.source_hashes(fixture_paths)
+                                                                                                                                                          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/srv/bob-data/.t3/worktrees/horizon/t3-7deb9745/tools/test_rust_parity.py", line 135, in source_hashes
+    return {str(Path(path).resolve().relative_to(lab.ROOT)): lab.digest(Path(path), "sha256") for path in sources}
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.14/pathlib/__init__.py", line 490, in relative_to
+    raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+ValueError: '/srv/bob-data/horizon-surface-7deb9745/parity/rust-material-stage-parity/inputs.txt' is not in the subpath of '/srv/bob-data/.t3/worktrees/horizon/t3-7deb9745'

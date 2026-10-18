@@ -1,0 +1,209 @@
+current filter setting: "TSTAMP >= 11525431137 && TSTAMP < 13140996376"
+Current metrics: e.totalcpu:i.totalcpu:name
+Current Sort Metric: Exclusive Total CPU Time ( e.totalcpu )
+Functions sorted by metric: Exclusive Total CPU Time
+
+Excl.     Incl.      Name
+Total     Total
+CPU sec.  CPU sec.
+1.595     1.595      <Total>
+0.247     0.562      <horizon_world::worldgen::ore_feature::OreFeature>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.127     0.127      <horizon_core::storage::PackedStorage>::get
+0.125     0.314      <horizon_world::worldgen::sculk::SculkPatchFeature>::spread_all::<horizon_world::worldgen::generator_decoration::World>
+0.081     0.094      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::height
+0.065     0.065      <alloc::collections::btree::map::BTreeMap<(i32, i32), horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>>::get::<(i32, i32)>
+0.061     0.061      <horizon_core::biome::BiomeZoom>::quart_at_block
+0.058     0.153      <horizon_world::chunk::BlockSection>::get
+0.056     0.191      <horizon_world::worldgen::terrain::TerrainBlocks<horizon_world::worldgen::generator::GenBlockStates>>::block
+0.051     0.051      <static>@0x175980 (<libc.so.6>)
+0.050     0.111      <horizon_world::chunk::BlockSection>::set
+0.039     0.052      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::block_matches_tag
+0.036     0.042      <static>@0xa5beb (<libc.so.6>)
+0.033     0.112      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::set_section_block
+0.030     0.030      <horizon_core::noise::perlin::PerlinNoise>::sample
+0.029     0.029      <horizon_core::storage::PackedStorage>::set
+0.026     0.406      <horizon_world::worldgen::sculk::SculkPatchFeature>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.021     0.100      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::feature::FeatureWorld>::set_block
+0.019     0.164      <horizon_world::worldgen::placement::PlacementModifier>::modify_inner::<horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>, (), horizon_world::worldgen::placement::chain::Queries<horizon_world::worldgen::generator_decoration::World>, <horizon_world::worldgen::placement::chain::FeaturePlacer>::place_control<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>, horizon_world::worldgen::feature_graph::FeatureExecutionError<horizon_world::worldgen::feature_region::RegionError>, <horizon_world::worldgen::generator_decoration::Decoration>::decorate::{closure#6}::{closure#0}>::{closure#0}>
+0.019     0.031      <horizon_world::worldgen::state_provider::properties::StateProperties>::value
+0.018     0.024      <horizon_world::worldgen::vegetation::MultifaceGrowthFeature>::place_growth::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.016     0.088      <horizon_world::worldgen::vegetation::VegetationPatchFeature>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.015     0.023      <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::update_heightmap
+0.013     0.081      <horizon_world::worldgen::block_predicate::BlockPredicate>::test_inner::<horizon_world::worldgen::placement::chain::Queries<horizon_world::worldgen::generator_decoration::World>>
+0.013     1.498      <horizon_world::worldgen::placement::chain::FeaturePlacer>::place_with_biome_check::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>, horizon_world::worldgen::feature_graph::FeatureExecutionError<horizon_world::worldgen::feature_region::RegionError>, <horizon_world::worldgen::generator_decoration::Decoration>::decorate::{closure#6}::{closure#0}>
+0.012     0.012      <horizon_world::block_support::BlockSupportRegistry>::is_face_sturdy::<horizon_world::worldgen::generator_decoration::World>
+0.011     0.059      <horizon_world::block_survival::BlockSurvivalRegistry>::can_attach::<horizon_world::worldgen::generator_decoration::World>
+0.011     0.011      <horizon_world::worldgen::rule_test::RuleTest>::test::<horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.011     0.121      <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::set_block_raw
+0.009     0.016      <horizon_world::worldgen::block_predicate::BlockPredicate>::test_inner::<horizon_world::worldgen::generator_decoration::World>
+0.009     0.018      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::state_face_sturdy
+0.009     0.009      malloc
+0.008     0.011      <horizon_world::java_hash_map::JavaHashMap<horizon_world::level::portal_travel::Record, ()>>::resize
+0.008     0.014      <horizon_world::worldgen::cave::MonsterRoomFeature>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.008     0.073      <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::set_block_worldgen
+0.008     0.009      core::slice::sort::stable::drift::sort::<horizon_world::worldgen::biome::BiomeId, <horizon_world::worldgen::biome::BiomeId as core::cmp::PartialOrd>::lt>
+0.008     0.008      free
+0.007     0.007      <alloc::collections::btree::map::BTreeMap<horizon_world::registry::BlockStateId, alloc::collections::btree::set_val::SetValZST>>::get::<horizon_world::registry::BlockStateId>
+0.007     0.007      <horizon_core::geometry::shape::VoxelShape>::face_shape
+0.007     0.077      <horizon_world::block_survival::BlockSurvivalRegistry>::can_attach_to::<horizon_world::worldgen::generator_decoration::World>
+0.007     0.069      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::biome_identity
+0.007     0.088      <horizon_world::worldgen::tree::TreeFeature>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.007     0.008      <std::hash::random::RandomState as core::hash::BuildHasher>::hash_one::<&i64>
+0.007     0.007      core::ptr::drop_glue::<horizon_core::geometry::shape::VoxelShape>
+0.006     0.010      <hashbrown::map::HashMap<horizon_world::registry::BlockStateId, u32, core::hash::BuildHasherDefault<horizon_world::chunk::StateIdHasher>>>::insert
+0.006     0.006      <horizon_core::geometry::shape::VoxelShape>::block
+0.006     0.006      <horizon_world::block_collision::BlockCollisionRegistry>::collision_shape::<horizon_world::worldgen::generator_decoration::World>
+0.006     0.011      <horizon_world::level::ticks::Ticks>::new
+0.006     0.053      <horizon_world::worldgen::cave::GeodeFeature>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.006     0.010      <horizon_world::worldgen::sculk::SculkPatchFeature>::unobstructed::<horizon_world::worldgen::generator_decoration::World>
+0.005     0.038      <horizon_core::noise::perlin::PerlinNoise>::get3
+0.005     0.021      <horizon_world::java_hash_map::JavaHashMap<horizon_world::worldgen::tree_blocks::JavaPos, ()>>::put
+0.005     0.013      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::feature::FeatureWorld>::block
+0.005     0.016      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::biome_should_freeze
+0.005     0.012      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::face_sturdy
+0.005     0.058      <horizon_world::worldgen::placement::chain::Queries<horizon_world::worldgen::generator_decoration::World> as horizon_world::worldgen::placement::context::PlacementContext>::biome_allows_feature
+0.005     0.021      <horizon_world::worldgen::sculk::SculkPatchFeature>::on_discharged::<horizon_world::worldgen::generator_decoration::World>
+0.005     0.005      <static>@0xa4384 (<libc.so.6>)
+0.005     0.005      core::ptr::drop_glue::<horizon_core::geometry::shape::VoxelShape>
+0.005     0.005      horizon_core::geometry::trig::sin
+0.004     0.014      <horizon_world::worldgen::biome_temperature::BiomeTemperature>::temperature
+0.004     0.005      <horizon_world::worldgen::height_provider::HeightProvider>::sample::<horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.004     0.005      <horizon_world::worldgen::spring::SpringFeature>::place::<horizon_world::worldgen::generator_decoration::World>
+0.004     0.008      <horizon_world::worldgen::state_provider::properties::StateProperties>::with_value
+0.003     0.008      <alloc::vec::Vec<horizon_core::geometry::Direction> as alloc::vec::spec_from_iter::SpecFromIter<horizon_core::geometry::Direction, core::iter::adapters::filter::Filter<core::array::iter::IntoIter<horizon_core::geometry::Direction, 6>, <horizon_world::worldgen::sculk::SculkPatchFeature>::update<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>::{closure#0}>>>::from_iter
+0.003     0.003      <horizon_core::geometry::shape::VoxelShape>::join_is_not_empty
+0.003     0.008      <horizon_world::level::Sim<horizon_world::worldgen::generator_decoration::ShapeLevel>>::update_shape_at
+0.003     0.003      <horizon_world::level::states::StateTable>::value
+0.003     0.035      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::update_shape_at_face
+0.003     0.004      <horizon_world::worldgen::state_provider::BlockStateProvider>::get_optional_state::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.003     0.005      <horizon_world::worldgen::tree::decorator::TreeDecorator>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.003     0.003      floor
+0.002     0.003      <alloc::vec::Vec<[i32; 3]> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<[i32; 3], core::iter::adapters::map::Map<core::iter::adapters::map::Map<core::iter::adapters::flatten::FlatMap<core::slice::iter::Iter<core::option::Option<usize>>, core::iter::sources::successors::Successors<usize, <horizon_world::java_hash_map::JavaHashMap<horizon_world::worldgen::tree_blocks::JavaPos, ()>>::entries::{closure#0}::{closure#0}>, <horizon_world::java_hash_map::JavaHashMap<horizon_world::worldgen::tree_blocks::JavaPos, ()>>::entries::{closure#0}>, <horizon_world::java_hash_map::JavaHashMap<horizon_world::worldgen::tree_blocks::JavaPos, ()>>::entries::{closure#1}>, <horizon_world::worldgen::tree_blocks::PosSet>::to_vec::{closure#0}>>>::from_iter
+0.002     0.040      <horizon_core::noise::stack::NoiseStack as horizon_core::noise::stack::Noise>::get3
+0.002     0.002      <horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom> as horizon_core::random::RandomSource>::next_int_bound
+0.002     0.034      <horizon_world::block_support::SupportType>::is_supporting
+0.002     0.002      <horizon_world::worldgen::biome_temperature::BiomeTemperatureSettings>::height_adjusted
+0.002     1.534      <horizon_world::worldgen::decoration::FeatureDecorationPlan>::decorate::<horizon_world::worldgen::generator_decoration::World, <horizon_world::worldgen::generator_decoration::Decoration>::decorate::{closure#5}, <horizon_world::worldgen::generator_decoration::Decoration>::decorate::{closure#6}>
+0.002     0.019      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::biome_should_snow
+0.002     0.006      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::schedule_block_tick
+0.002     0.002      <horizon_world::worldgen::value_provider::IntProvider>::sample::<horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.002     0.002      <std::hash::random::RandomState as core::hash::BuildHasher>::hash_one::<&(horizon_core::ticks::TickTypeId, horizon_core::position::BlockPos)>
+0.002     0.021      horizon_world::worldgen::structure::start::place_in_chunk::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.001     0.001      <alloc::collections::btree::map::BTreeMap<(i32, i32), horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>>::insert
+0.001     0.001      <alloc::collections::btree::map::IntoIter<alloc::string::String, usize>>::dying_next
+0.001     0.001      <alloc::collections::btree::node::NodeRef<alloc::collections::btree::node::marker::Owned, horizon_world::worldgen::biome::BiomeId, alloc::collections::btree::set_val::SetValZST, alloc::collections::btree::node::marker::LeafOrInternal>>::bulk_push::<alloc::collections::btree::dedup_sorted_iter::DedupSortedIter<horizon_world::worldgen::biome::BiomeId, alloc::collections::btree::set_val::SetValZST, core::iter::adapters::map::Map<alloc::vec::into_iter::IntoIter<horizon_world::worldgen::biome::BiomeId>, <alloc::collections::btree::set::BTreeSet<horizon_world::worldgen::biome::BiomeId>>::from_sorted_iter<alloc::vec::into_iter::IntoIter<horizon_world::worldgen::biome::BiomeId>>::{closure#0}>>, alloc::alloc::Global>
+0.001     0.002      <alloc::raw_vec::RawVecInner<_>>::reserve::do_reserve_and_handle::<alloc::alloc::Global>
+0.001     0.001      <alloc::vec::Vec<horizon_core::geometry::Direction> as alloc::vec::spec_from_iter::SpecFromIter<horizon_core::geometry::Direction, core::iter::adapters::filter::Filter<core::iter::adapters::copied::Copied<core::slice::iter::Iter<horizon_core::geometry::Direction>>, <horizon_world::worldgen::vegetation::MultifaceGrowthFeature>::place<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>::{closure#0}>>>::from_iter
+0.001     0.001      <alloc::vec::Vec<horizon_world::worldgen::biome::BiomeId> as alloc::vec::spec_from_iter::SpecFromIter<horizon_world::worldgen::biome::BiomeId, core::iter::adapters::cloned::Cloned<core::iter::adapters::flatten::Flatten<core::slice::iter::Iter<[horizon_world::worldgen::biome::BiomeId; 64]>>>>>::from_iter
+0.001     0.001      <alloc::vec::Vec<u16>>::extend_desugared::<core::str::iter::EncodeUtf16>
+0.001     0.001      <core::hash::sip::Hasher<core::hash::sip::Sip13Rounds> as core::hash::Hasher>::write
+0.001     0.018      <core::iter::adapters::map::Map<core::ops::range::Range<usize>, <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::new::{closure#0}> as core::iter::traits::iterator::Iterator>::try_fold::<(), <core::iter::adapters::GenericShunt<core::iter::adapters::map::Map<core::ops::range::Range<usize>, <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::new::{closure#0}>, core::result::Result<core::convert::Infallible, core::io::error::Error>> as core::iter::traits::iterator::Iterator>::try_fold<(), core::iter::traits::iterator::Iterator::try_for_each::call<horizon_world::chunk::BlockSection, core::ops::control_flow::ControlFlow<horizon_world::chunk::BlockSection>, core::ops::control_flow::ControlFlow<horizon_world::chunk::BlockSection>::Break>::{closure#0}, core::ops::control_flow::ControlFlow<horizon_world::chunk::BlockSection>>::{closure#0}, core::ops::control_flow::ControlFlow<core::ops::control_flow::ControlFlow<horizon_world::chunk::BlockSection>>>
+0.001     0.003      <hashbrown::map::HashMap<(horizon_core::ticks::TickTypeId, horizon_core::position::BlockPos), (), std::hash::random::RandomState>>::insert
+0.001     0.004      <hashbrown::raw::RawTable<(horizon_world::registry::BlockStateId, u32)>>::reserve_rehash::<hashbrown::map::make_hasher<horizon_world::registry::BlockStateId, u32, core::hash::BuildHasherDefault<horizon_world::chunk::StateIdHasher>>::{closure#0}>
+0.001     0.001      <hashbrown::raw::RawTable<(i64, horizon_core::ticks::ChunkTicks)> as core::ops::drop::Drop>::drop
+0.001     0.004      <horizon_core::ticks::index::DeadlineIndex as core::default::Default>::default
+0.001     0.016      <horizon_world::chunk::BlockSection>::uniform
+0.001     0.001      <horizon_world::heightmap::Heightmap>::set_height
+0.001     0.001      <horizon_world::java_hash_map::JavaHashMap<horizon_world::worldgen::tree_blocks::JavaPos, ()>>::find
+0.001     0.005      <horizon_world::level::Sim<horizon_world::worldgen::generator_decoration::ShapeLevel>>::update_shape_class
+0.001     0.001      <horizon_world::worldgen::biome_chunk::BiomeRegion<horizon_world::worldgen::biome::BiomeId>>::noise_biome
+0.001     0.009      <horizon_world::worldgen::biome_temperature::BiomeTemperature>::new
+0.001     0.018      <horizon_world::worldgen::block_column::BlockColumnFeature>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.001     0.018      <horizon_world::worldgen::disk::DiskFeature>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.001     1.330      <horizon_world::worldgen::feature_graph::FeatureDefinition>::place_inner::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.001     0.003      <horizon_world::worldgen::feature_region::TerrainRegion<horizon_world::worldgen::generator::GenBlockStates> as horizon_world::worldgen::placement::context::PlacementContext>::fluid_state
+0.001     0.001      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::mark_postprocessing
+0.001     0.005      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::structure::legacy::PieceWorld>::block
+0.001     0.008      <horizon_world::worldgen::generator_decoration::World>::schedule_captured
+0.001     0.001      <horizon_world::worldgen::placement::chain::FeaturePlacer>::place_control::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>, horizon_world::worldgen::feature_graph::FeatureExecutionError<horizon_world::worldgen::feature_region::RegionError>, <horizon_world::worldgen::feature_graph::PlacedFeatureDefinition>::place_in<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>::{closure#0}>::{closure#0}
+0.001     0.021      <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::new
+0.001     0.001      <horizon_world::worldgen::tree::update_shape_at_edge<horizon_world::worldgen::generator_decoration::World>::{closure#1} as core::ops::function::FnOnce<(i32, i32, i32)>>::call_once
+0.001     0.002      <horizon_world::worldgen::tree_blocks::PosSet>::pop_first
+0.001     0.031      <horizon_world::worldgen::vegetation::MultifaceGrowthFeature>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.001     0.001      <static>@0x8a5d2 (<libm.so.6>)
+0.001     0.001      __rustc::__rdl_dealloc
+0.001     0.001      __rustc::__rust_alloc
+0.001     0.001      calloc
+0.001     0.001      ceilf
+0.001     0.004      core::ptr::drop_glue::<horizon_world::level::ticks::Ticks>
+0.001     0.009      core::ptr::drop_glue::<horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>
+0.001     0.001      core::slice::sort::stable::quicksort::quicksort::<horizon_world::worldgen::biome::BiomeId, <horizon_world::worldgen::biome::BiomeId as core::cmp::PartialOrd>::lt>
+0.001     0.001      horizon_core::biome::obfuscate_seed
+0.001     0.002      horizon_world::worldgen::structure::processor::process_block::<horizon_world::worldgen::generator_decoration::World>
+0.001     0.010      realloc
+0.        0.001      <alloc::collections::btree::map::BTreeMap<(i32, i32), horizon_world::worldgen::biome_chunk::BiomeChunk<horizon_world::worldgen::biome::BiomeId>> as core::ops::drop::Drop>::drop
+0.        0.001      <alloc::collections::btree::map::BTreeMap<_, _, _> as core::clone::Clone>::clone::clone_subtree::<alloc::string::String, alloc::string::String, alloc::alloc::Global>
+0.        0.005      <alloc::collections::btree::map::BTreeMap<_, _, _> as core::clone::Clone>::clone::clone_subtree::<alloc::string::String, alloc::sync::Arc<alloc::collections::btree::set::BTreeSet<horizon_world::registry::BlockStateId>>, alloc::alloc::Global>
+0.        0.005      <alloc::collections::btree::map::BTreeMap<alloc::string::String, alloc::sync::Arc<alloc::collections::btree::set::BTreeSet<horizon_world::registry::BlockStateId>>> as core::clone::Clone>::clone
+0.        0.004      <alloc::collections::btree::map::BTreeMap<alloc::string::String, alloc::sync::Arc<alloc::collections::btree::set::BTreeSet<horizon_world::registry::BlockStateId>>> as core::ops::drop::Drop>::drop
+0.        0.002      <alloc::collections::btree::map::BTreeMap<horizon_world::worldgen::biome::BiomeId, alloc::collections::btree::set_val::SetValZST>>::bulk_build_from_sorted_iter::<core::iter::adapters::map::Map<alloc::vec::into_iter::IntoIter<horizon_world::worldgen::biome::BiomeId>, <alloc::collections::btree::set::BTreeSet<horizon_world::worldgen::biome::BiomeId>>::from_sorted_iter<alloc::vec::into_iter::IntoIter<horizon_world::worldgen::biome::BiomeId>>::{closure#0}>>
+0.        0.001      <alloc::collections::btree::map::BTreeMap<usize, alloc::collections::btree::set_val::SetValZST>>::insert
+0.        0.001      <alloc::collections::btree::node::Handle<alloc::collections::btree::node::NodeRef<alloc::collections::btree::node::marker::Mut, usize, alloc::collections::btree::set_val::SetValZST, alloc::collections::btree::node::marker::Leaf>, alloc::collections::btree::node::marker::Edge>>::insert_recursing::<alloc::alloc::Global, <alloc::collections::btree::map::entry::VacantEntry<usize, alloc::collections::btree::set_val::SetValZST>>::insert_entry::{closure#0}>
+0.        0.012      <alloc::collections::btree::set::BTreeSet<horizon_world::worldgen::biome::BiomeId> as core::iter::traits::collect::FromIterator<horizon_world::worldgen::biome::BiomeId>>::from_iter::<core::iter::adapters::cloned::Cloned<core::iter::adapters::flatten::Flatten<core::slice::iter::Iter<[horizon_world::worldgen::biome::BiomeId; 64]>>>>
+0.        0.002      <alloc::raw_vec::RawVec<(&str, horizon_world::nbt::Tag)>>::grow_one
+0.        0.001      <alloc::raw_vec::RawVec<(&str, i32)>>::grow_one
+0.        0.001      <alloc::raw_vec::RawVec<[i32; 3]>>::grow_one
+0.        0.004      <alloc::raw_vec::RawVec<horizon_world::loot::LootStack>>::grow_one
+0.        0.002      <alloc::raw_vec::RawVec<usize>>::grow_one
+0.        0.011      <alloc::raw_vec::RawVecInner>::finish_grow
+0.        0.005      <alloc::string::String as core::clone::Clone>::clone
+0.        0.001      <alloc::vec::Vec<[horizon_world::worldgen::biome::BiomeId; 64]> as core::clone::Clone>::clone
+0.        0.020      <alloc::vec::Vec<horizon_world::chunk::BlockSection> as alloc::vec::spec_from_iter::SpecFromIter<horizon_world::chunk::BlockSection, core::iter::adapters::GenericShunt<core::iter::adapters::map::Map<core::ops::range::Range<usize>, <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::new::{closure#0}>, core::result::Result<core::convert::Infallible, core::io::error::Error>>>>::from_iter
+0.        0.001      <alloc::vec::Vec<u16> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<u16, core::str::iter::EncodeUtf16>>::from_iter
+0.        0.003      <hashbrown::raw::RawTableInner>::fallible_with_capacity::<alloc::alloc::Global>
+0.        0.003      <horizon_core::ticks::generation::ProtoChunkTicks as horizon_core::ticks::generation::TickContainerAccess>::schedule
+0.        0.007      <horizon_world::block_placement::BlockPlacement>::place::<horizon_world::worldgen::generator_decoration::World>
+0.        0.001      <horizon_world::block_survival::BlockSurvivalRegistry>::can_survive::<horizon_world::worldgen::generator_decoration::World>
+0.        0.001      <horizon_world::java_hash_map::JavaHashMap<horizon_world::worldgen::tree_blocks::JavaPos, ()>>::remove_current
+0.        0.001      <horizon_world::level::Sim<horizon_world::worldgen::generator_decoration::ShapeLevel>>::can_survive_class
+0.        0.003      <horizon_world::level::Sim<horizon_world::worldgen::generator_decoration::ShapeLevel>>::waterlogged_tick
+0.        0.002      <horizon_world::registry::BlockRegistry>::resolve
+0.        0.012      <horizon_world::worldgen::biome_chunk::BiomeRegion<horizon_world::worldgen::biome::BiomeId>>::present_in_chunk
+0.        0.007      <horizon_world::worldgen::biome_weather::BiomeWeatherBindings>::should_freeze::<horizon_world::worldgen::generator_decoration::World>
+0.        0.008      <horizon_world::worldgen::biome_weather::BiomeWeatherBindings>::should_snow::<horizon_world::worldgen::generator_decoration::World>
+0.        0.018      <horizon_world::worldgen::feature_graph::FeatureDefinition>::evaluate::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>::{closure#9}
+0.        0.002      <horizon_world::worldgen::feature_graph::PlacedFeatureDefinition>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.        0.121      <horizon_world::worldgen::feature_graph::PlacedFeatureDefinition>::place_in::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.        1.578      <horizon_world::worldgen::generator::Pipeline<horizon_core::random::XoroshiroRandom> as horizon_world::worldgen::generator::SeededPipeline>::decorate
+0.        1.578      <horizon_world::worldgen::generator_decoration::Decoration>::decorate
+0.        0.002      <horizon_world::worldgen::generator_decoration::Decoration>::decorate::{closure#5}::{closure#1}
+0.        0.001      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::attachment_at
+0.        0.001      <horizon_world::worldgen::generator_decoration::World as horizon_world::worldgen::placement::context::PlacementContext>::block_survives
+0.        0.022      <horizon_world::worldgen::generator_decoration::World>::shape_update
+0.        0.001      <horizon_world::worldgen::placement::PlacementModifier>::modify_inner::<horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>, (), horizon_world::worldgen::placement::chain::Queries<horizon_world::worldgen::generator_decoration::World>, <horizon_world::worldgen::placement::chain::FeaturePlacer>::place_control<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>, horizon_world::worldgen::feature_graph::FeatureExecutionError<horizon_world::worldgen::feature_region::RegionError>, <horizon_world::worldgen::feature_graph::PlacedFeatureDefinition>::place_in<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>::{closure#0}>::{closure#0}>
+0.        0.543      <horizon_world::worldgen::placement::chain::FeaturePlacer>::place_with_budget::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>, horizon_world::worldgen::feature_graph::FeatureExecutionError<horizon_world::worldgen::feature_region::RegionError>, <horizon_world::worldgen::feature_graph::PlacedFeatureDefinition>::place_in<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>::{closure#0}>
+0.        0.008      <horizon_world::worldgen::simple_block::SimpleBlockFeature>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.        0.050      <horizon_world::worldgen::snow_freeze::SnowAndFreezeFeature>::place::<horizon_world::worldgen::generator_decoration::World>
+0.        0.001      <horizon_world::worldgen::structure::legacy::PieceFrame>::generate_box
+0.        0.001      <horizon_world::worldgen::structure::legacy::PieceFrame>::get
+0.        0.001      <horizon_world::worldgen::structure::legacy::PieceFrame>::place
+0.        0.001      <horizon_world::worldgen::structure::legacy::TemplatePiece as horizon_world::worldgen::structure::legacy::LegacyPiece>::post_process
+0.        0.001      <horizon_world::worldgen::structure::legacy::TemplatePiece>::place_at
+0.        0.008      <horizon_world::worldgen::structure::mineshaft::MineshaftPiece as horizon_world::worldgen::structure::legacy::LegacyPiece>::post_process
+0.        0.001      <horizon_world::worldgen::structure::mineshaft::MineshaftPiece>::double_support
+0.        0.001      <horizon_world::worldgen::tree::Run<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>>::set
+0.        0.012      <horizon_world::worldgen::tree::TreeFeature>::try_place_leaf::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.        0.012      <horizon_world::worldgen::tree::foliage::FoliagePlacer>::leaves_row::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.        0.001      <horizon_world::worldgen::tree::trunk::TrunkPlacer>::place_log::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.        0.001      <horizon_world::worldgen::tree::trunk::TrunkPlacer>::place_trunk::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.        0.002      <horizon_world::worldgen::tree_blocks::TreeBlocks>::waterlogged
+0.        0.001      <horizon_world::worldgen::underwater_magma::UnderwaterMagmaFeature>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.        0.001      <horizon_world::worldgen::vegetation::HugeMushroomFeature>::place::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.        0.001      <horizon_world::worldgen::vegetation::HugeMushroomFeature>::place_block::<horizon_world::worldgen::generator_decoration::World>
+0.        0.004      <horizon_world::worldgen::vines::VinesFeature>::place::<horizon_world::worldgen::generator_decoration::World>
+0.        1.581      <static>@0x14aed (<libgp-collector.so>)
+0.        1.581      <static>@0x97aaa (<libc.so.6>)
+0.        1.581      <std::sys::thread::unix::Thread>::new::thread_start
+0.        1.581      <std::thread::lifecycle::spawn_unchecked<chunkgen_profile::main::{closure#5}::{closure#0}::{closure#0}, core::result::Result<(), alloc::boxed::Box<dyn core::error::Error + core::marker::Send + core::marker::Sync>>>::{closure#1} as core::ops::function::FnOnce<()>>::call_once::{shim:vtable#0}
+0.        0.003      core::ptr::drop_glue::<horizon_core::ticks::LevelTicks>
+0.        0.007      core::ptr::drop_glue::<horizon_world::chunk::BlockSection>
+0.        0.008      core::ptr::drop_glue::<horizon_world::worldgen::terrain::TerrainBlocks<horizon_world::worldgen::generator::GenBlockStates>>
+0.        0.009      core::slice::sort::stable::driftsort_main::<horizon_world::worldgen::biome::BiomeId, <horizon_world::worldgen::biome::BiomeId as core::cmp::PartialOrd>::lt, alloc::vec::Vec<horizon_world::worldgen::biome::BiomeId>>
+0.        0.004      horizon_world::worldgen::cave::safe_set::<horizon_world::worldgen::generator_decoration::World, <horizon_world::worldgen::cave::GeodeFeature>::place<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>::{closure#0}>
+0.        0.002      horizon_world::worldgen::cave::safe_set::<horizon_world::worldgen::generator_decoration::World, <horizon_world::worldgen::cave::MonsterRoomFeature>::place<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>::{closure#0}>
+0.        0.010      horizon_world::worldgen::structure::jigsaw::place_element::<horizon_world::worldgen::generator_decoration::World, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::XoroshiroRandom>>
+0.        0.002      horizon_world::worldgen::structure::legacy::state
+0.        0.009      horizon_world::worldgen::structure::processor::place_in_world::<horizon_world::worldgen::generator_decoration::World>
+0.        0.001      horizon_world::worldgen::structure::processor::update_shape_at_edge::<horizon_world::worldgen::generator_decoration::World>
+0.        0.001      horizon_world::worldgen::structure::ruined_portal::post_process
+0.        1.581      std::sys::backtrace::__rust_begin_short_backtrace::<chunkgen_profile::main::{closure#5}::{closure#0}::{closure#0}, core::result::Result<(), alloc::boxed::Box<dyn core::error::Error + core::marker::Send + core::marker::Sync>>>

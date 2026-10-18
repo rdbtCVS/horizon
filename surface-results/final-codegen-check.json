@@ -1,0 +1,42 @@
+{
+  "production_commit": "69441d539aa48b8bcc82f97eaa9c7e61e5c90409",
+  "sections": {
+    ".text": {
+      "candidate": {
+        "bytes": 4210134,
+        "sha256": "4654a486f0568e4a03db5840c3405eae017f5d3fb7d0f2b6b15c9203c3619785"
+      },
+      "final": {
+        "bytes": 4210134,
+        "sha256": "4654a486f0568e4a03db5840c3405eae017f5d3fb7d0f2b6b15c9203c3619785"
+      },
+      "equal": true
+    },
+    ".rodata": {
+      "candidate": {
+        "bytes": 202100,
+        "sha256": "4ed326615aba581aff41551f9c92af761e0a7c5fa3c4d21d1311e27dd38e5667"
+      },
+      "final": {
+        "bytes": 202100,
+        "sha256": "4ed326615aba581aff41551f9c92af761e0a7c5fa3c4d21d1311e27dd38e5667"
+      },
+      "equal": true
+    },
+    ".data.rel.ro": {
+      "candidate": {
+        "bytes": 59536,
+        "sha256": "aae55201521c92f834bac06ae264284a549901e00281ae047b124539f7e1bca0"
+      },
+      "final": {
+        "bytes": 59536,
+        "sha256": "aae55201521c92f834bac06ae264284a549901e00281ae047b124539f7e1bca0"
+      },
+      "equal": true
+    }
+  },
+  "binaries": {
+    "candidate": "353c979ce0a3d297687015077c75b981b34b1e571e6651e7f26ec91aac943102",
+    "final": "353c979ce0a3d297687015077c75b981b34b1e571e6651e7f26ec91aac943102"
+  }
+}

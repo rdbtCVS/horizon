@@ -1,0 +1,12 @@
+loaded resources in 1.50s
+seeded generator in 201.11ms
+warmup_ms 3483.173509
+PROFILE_MEASURE_START 5.187803208
+PROFILE_TERRAIN_END 6.051069276
+generated 256 proto chunks with 4 threads in 863.24ms: 296.6 chunks/s (13.5 ms/chunk/thread)
+  cpu time 13.3 ms/chunk
+PROFILE_WALL_MS_CHUNK 3.372024
+PROFILE_STAGES {"biomes":0.5153572265625,"carvers":0.38995000390625,"chunks":256,"noise":5.37628653515625,"structures":3.8951474921875,"surface":3.19722412109375,"threads":4,"wall_ms_chunk":3.3720243984375}
+decorated 196 chunks in 148.04ms: 1324.0 chunks/s; feature roots placed 11544, unsupported 0, failed 0
+PROFILE_MEASURE_END 6.199177742
+RESOURCE 8.870587 0.29441 834476

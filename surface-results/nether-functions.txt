@@ -1,0 +1,169 @@
+current filter setting: "TSTAMP >= 2044320542 && TSTAMP < 4660493829"
+Current metrics: e.totalcpu:i.totalcpu:name
+Current Sort Metric: Exclusive Total CPU Time ( e.totalcpu )
+Functions sorted by metric: Exclusive Total CPU Time
+
+Excl.     Incl.      Name
+Total     Total
+CPU sec.  CPU sec.
+2.598     2.598      <Total>
+0.453     0.453      <horizon_core::biome::BiomeZoom>::quart_at_block
+0.321     1.077      <horizon_world::worldgen::material_condition::rule::CompiledRule<horizon_core::random::LegacyRandom>>::apply::<horizon_world::worldgen::material_condition::density::MaterialDensitySources<horizon_world::worldgen::generator::SurfaceQueries<horizon_core::random::LegacyRandom>>>
+0.219     0.756      <horizon_world::worldgen::material_condition::Compiled<horizon_core::random::LegacyRandom>>::test::<horizon_world::worldgen::material_condition::density::MaterialDensitySources<horizon_world::worldgen::generator::SurfaceQueries<horizon_core::random::LegacyRandom>>>
+0.190     0.209      <horizon_core::noise::perlin::PerlinNoise>::add_volume
+0.180     0.307      <horizon_world::chunk::BlockSection>::set
+0.159     0.159      <horizon_core::storage::PackedStorage>::get
+0.129     0.234      <horizon_world::chunk::BlockSection>::get
+0.111     1.721      horizon_world::worldgen::material_stage::build_surface::<horizon_core::random::LegacyRandom, horizon_world::worldgen::generator::SurfaceQueries<horizon_core::random::LegacyRandom>, horizon_world::worldgen::generator::GenBlockStates>
+0.101     0.166      <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::update_heightmap
+0.069     0.388      <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::set_block_worldgen
+0.049     0.508      horizon_world::worldgen::terrain::fill_noise::<horizon_world::worldgen::generator::GenBlockStates, dyn horizon_world::worldgen::terrain::TerrainAquifer>
+0.048     0.355      <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::set_block_raw
+0.046     0.055      horizon_core::carving::ellipsoid::carve_ellipsoid_with_budget::<horizon_core::carving::CarvingMask, <horizon_world::worldgen::carver::CaveRun<horizon_core::carving::CarvingMask>>::ellipsoid::{closure#0}>
+0.044     0.170      <horizon_world::worldgen::terrain::TerrainBlocks<horizon_world::worldgen::generator::GenBlockStates>>::block
+0.036     0.036      <horizon_core::noise::perlin::PerlinNoise>::sample
+0.032     0.032      <horizon_world::worldgen::aquifer::DisabledAquifer<horizon_world::worldgen::aquifer::GlobalFluidPicker> as horizon_world::worldgen::terrain::TerrainAquifer>::compute_substance
+0.026     0.026      <horizon_core::noise::volume::DensityVolume>::index
+0.024     0.024      <horizon_world::worldgen::biome_chunk::BiomeRegion<horizon_world::worldgen::biome::BiomeId>>::noise_biome
+0.024     0.024      <horizon_world::worldgen::climate::index::ClimateIndex<alloc::string::String>>::search
+0.024     0.024      floor
+0.023     0.023      <static>@0x175980 (<libc.so.6>)
+0.020     0.497      <horizon_world::worldgen::generator::SurfaceQueries<horizon_core::random::LegacyRandom> as horizon_world::worldgen::material_condition::MaterialSurfaceQueries>::biome
+0.017     0.017      <horizon_core::storage::PackedStorage>::set
+0.016     0.024      <static>@0xa5beb (<libc.so.6>)
+0.015     0.085      <horizon_world::worldgen::carver::CaveRun<horizon_core::carving::CarvingMask>>::tunnel
+0.014     0.055      <horizon_core::noise::perlin::PerlinNoise>::get3
+0.014     0.060      <horizon_world::worldgen::biome_chunk::BiomeChunk<horizon_world::worldgen::biome::BiomeId>>::fill::<alloc::string::String, <horizon_world::worldgen::generator::Pipeline<horizon_core::random::LegacyRandom>>::biome_chunk::{closure#0}>
+0.014     0.014      <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::ensure_heightmap
+0.013     0.087      horizon_world::worldgen::carving::apply_carving_mask::<horizon_core::random::LegacyRandom, horizon_world::worldgen::generator::SurfaceQueries<horizon_core::random::LegacyRandom>, horizon_world::worldgen::generator::GenBlockStates, dyn horizon_world::worldgen::terrain::TerrainAquifer, <horizon_world::worldgen::generator::Pipeline<horizon_core::random::LegacyRandom>>::generate::{closure#3}>
+0.012     0.012      <alloc::collections::btree::map::BTreeMap<horizon_world::worldgen::biome::BiomeId, alloc::collections::btree::set_val::SetValZST>>::insert
+0.011     0.017      <horizon_core::density::SamplerContext>::with_buffer::<(), <horizon_core::density::arithmetic::BinarySampler as horizon_core::density::DensitySampler>::sample_volume::{closure#0}>
+0.011     0.014      <horizon_world::worldgen::climate::ClimateVolume>::target
+0.010     0.195      <horizon_core::density::arithmetic::UnarySampler as horizon_core::density::DensitySampler>::sample_volume
+0.010     0.010      <horizon_core::density::interpolation::InterpolatedSampler>::fill_cell
+0.009     0.009      <horizon_core::carving::CarvingMask as horizon_core::carving::ellipsoid::CarverOutput>::carve
+0.008     0.008      <horizon_world::worldgen::aquifer::DisabledAquifer<horizon_world::worldgen::aquifer::GlobalFluidPicker> as horizon_world::worldgen::terrain::TerrainAquifer>::should_schedule_fluid_update
+0.008     0.492      <horizon_world::worldgen::material_condition::Context<horizon_world::worldgen::material_condition::density::MaterialDensitySources<horizon_world::worldgen::generator::SurfaceQueries<horizon_core::random::LegacyRandom>>>>::biome
+0.008     0.008      horizon_core::geometry::trig::cos
+0.008     0.008      horizon_core::geometry::trig::sin
+0.006     0.022      <horizon_world::nbt::Reader>::payload
+0.006     0.066      <horizon_world::worldgen::generator_structures::StructureState>::starts_at::<horizon_world::worldgen::generator::StructureQueries<horizon_core::random::LegacyRandom>>
+0.006     0.006      mprotect
+0.005     0.013      <alloc::collections::btree::map::BTreeMap<alloc::string::String, alloc::collections::btree::set_val::SetValZST>>::get::<str>
+0.005     0.060      <horizon_core::noise::stack::NoiseStack as horizon_core::noise::stack::Noise>::get3
+0.003     0.027      <horizon_world::worldgen::climate::index::ClimateSearch<alloc::string::String>>::find
+0.003     0.009      <horizon_world::worldgen::structure::template::StructureTemplate>::from_nbt::{closure#0}
+0.003     0.007      <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::prime_heightmaps
+0.003     0.003      <horizon_world::worldgen::value_provider::IntProvider>::sample::<horizon_core::random::LegacyRandom>
+0.003     0.004      horizon_world::worldgen::structure::template::get
+0.002     0.003      <alloc::collections::btree::map::IntoIter<alloc::string::String, serde_json::value::Value>>::dying_next
+0.002     0.009      <alloc::collections::btree::map::entry::VacantEntry<horizon_world::nbt::JavaString, horizon_world::nbt::Tag>>::insert_entry
+0.002     0.002      <alloc::vec::Vec<horizon_world::nbt::Tag>>::push_mut
+0.002     0.004      <horizon_world::worldgen::generator::Pipeline<horizon_core::random::LegacyRandom>>::carver_biome
+0.002     0.002      <static>@0xa4384 (<libc.so.6>)
+0.002     0.002      <std::hash::random::RandomState as core::hash::BuildHasher>::hash_one::<&(i32, i32)>
+0.002     0.002      miniz_oxide::inflate::core::decompress_fast
+0.001     0.003      <[horizon_world::heightmap::HeightmapType; 2]>::try_map::<core::ops::try_trait::NeverShortCircuit<core::result::Result<i32, horizon_world::heightmap::HeightmapError>>, <core::ops::try_trait::NeverShortCircuit<core::result::Result<i32, horizon_world::heightmap::HeightmapError>>>::wrap_mut_1<horizon_world::heightmap::HeightmapType, horizon_world::worldgen::terrain::fill_noise<horizon_world::worldgen::generator::GenBlockStates, dyn horizon_world::worldgen::terrain::TerrainAquifer>::{closure#0}>::{closure#0}>
+0.001     0.001      <alloc::vec::Vec<u16> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<u16, core::str::iter::EncodeUtf16>>::from_iter
+0.001     0.001      <horizon_core::density::ConstantSampler as horizon_core::density::DensitySampler>::sample_volume
+0.001     0.001      <horizon_world::heightmap::Heightmap>::set_height
+0.001     0.001      <horizon_world::nbt::Reader>::count
+0.001     0.091      <horizon_world::worldgen::carver::CaveCarver>::carve::<horizon_core::carving::CarvingMask, horizon_core::random::LegacyRandom>
+0.001     0.001      <horizon_world::worldgen::height_provider::HeightProvider>::sample::<horizon_core::random::LegacyRandom>
+0.001     0.001      <horizon_world::worldgen::material_condition::MaterialCondition as core::clone::Clone>::clone
+0.001     0.005      <horizon_world::worldgen::material_condition::rule::CompiledRule<horizon_core::random::LegacyRandom>>::compile::<horizon_world::worldgen::material_condition::density::MaterialDensitySources<horizon_world::worldgen::generator::SurfaceQueries<horizon_core::random::LegacyRandom>>>
+0.001     0.001      <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::set_generation_stage
+0.001     0.001      __rustc::__rust_no_alloc_shim_is_unstable_v2
+0.001     0.002      alloc::fmt::format::format_inner
+0.001     0.001      calloc
+0.001     0.001      core::fmt::write
+0.001     0.001      core::slice::memchr::memchr_aligned
+0.001     0.096      horizon_world::worldgen::carver::generation::generate_carving_mask::<alloc::string::String, <horizon_world::worldgen::generator::Pipeline<horizon_core::random::LegacyRandom>>::generate::{closure#2}>
+0.001     0.001      horizon_world::worldgen::structure::jigsaw::template_jigsaws::{closure#0}
+0.001     0.001      malloc
+0.        0.001      <&mut <horizon_world::worldgen::structure::template::StructureTemplate>::jigsaws::{closure#0}::{closure#0} as core::ops::function::FnMut<(&horizon_world::worldgen::structure::template::BlockInfo,)>>::call_mut
+0.        0.009      <alloc::collections::btree::map::BTreeMap<horizon_world::nbt::JavaString, horizon_world::nbt::Tag>>::insert
+0.        0.006      <alloc::collections::btree::map::IntoIter<horizon_world::nbt::JavaString, horizon_world::nbt::Tag> as core::ops::drop::Drop>::drop
+0.        0.001      <alloc::raw_vec::RawVec<(&str, horizon_world::nbt::Tag)>>::grow_one
+0.        0.001      <alloc::raw_vec::RawVec<alloc::vec::Vec<f32>>>::grow_one
+0.        0.001      <alloc::raw_vec::RawVec<f32>>::grow_one
+0.        0.001      <alloc::raw_vec::RawVecInner<_>>::reserve::do_reserve_and_handle::<alloc::alloc::Global>
+0.        0.003      <alloc::raw_vec::RawVecInner>::finish_grow
+0.        0.001      <alloc::raw_vec::RawVecInner>::finish_grow
+0.        0.001      <alloc::raw_vec::RawVecInner>::try_allocate_in
+0.        0.002      <alloc::vec::Vec<horizon_world::chunk::BlockSection> as alloc::vec::spec_from_iter::SpecFromIter<horizon_world::chunk::BlockSection, core::iter::adapters::GenericShunt<core::iter::adapters::map::Map<core::ops::range::Range<usize>, <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::new::{closure#0}>, core::result::Result<core::convert::Infallible, core::io::error::Error>>>>::from_iter
+0.        0.002      <alloc::vec::Vec<horizon_world::worldgen::structure::processor::Processor> as alloc::vec::spec_from_iter::SpecFromIter<horizon_world::worldgen::structure::processor::Processor, core::iter::adapters::GenericShunt<core::iter::adapters::map::Map<core::slice::iter::Iter<serde_json::value::Value>, <horizon_world::worldgen::structure::processor::ProcessorList>::decode::{closure#1}>, core::result::Result<core::convert::Infallible, horizon_world::worldgen::DecodeError>>>>::from_iter
+0.        0.002      <alloc::vec::Vec<horizon_world::worldgen::structure::processor::Rule> as alloc::vec::spec_from_iter::SpecFromIter<horizon_world::worldgen::structure::processor::Rule, core::iter::adapters::GenericShunt<core::iter::adapters::map::Map<core::slice::iter::Iter<serde_json::value::Value>, <horizon_world::worldgen::structure::processor::Processor>::decode::{closure#3}>, core::result::Result<core::convert::Infallible, horizon_world::worldgen::DecodeError>>>>::from_iter
+0.        0.001      <alloc::vec::Vec<horizon_world::worldgen::structure::template::BlockInfo> as alloc::vec::spec_extend::SpecExtend<horizon_world::worldgen::structure::template::BlockInfo, alloc::vec::into_iter::IntoIter<horizon_world::worldgen::structure::template::BlockInfo>>>::spec_extend
+0.        0.001      <alloc::vec::Vec<horizon_world::worldgen::structure::template::JigsawInfo> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<horizon_world::worldgen::structure::template::JigsawInfo, core::iter::adapters::filter_map::FilterMap<core::slice::iter::Iter<horizon_world::worldgen::structure::template::BlockInfo>, <horizon_world::worldgen::structure::template::StructureTemplate>::jigsaws::{closure#0}::{closure#0}>>>::from_iter
+0.        0.002      <core::iter::adapters::map::Map<core::ops::range::Range<usize>, <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::new::{closure#0}> as core::iter::traits::iterator::Iterator>::try_fold::<(), <core::iter::adapters::GenericShunt<core::iter::adapters::map::Map<core::ops::range::Range<usize>, <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::new::{closure#0}>, core::result::Result<core::convert::Infallible, core::io::error::Error>> as core::iter::traits::iterator::Iterator>::try_fold<(), core::iter::traits::iterator::Iterator::try_for_each::call<horizon_world::chunk::BlockSection, core::ops::control_flow::ControlFlow<horizon_world::chunk::BlockSection>, core::ops::control_flow::ControlFlow<horizon_world::chunk::BlockSection>::Break>::{closure#0}, core::ops::control_flow::ControlFlow<horizon_world::chunk::BlockSection>>::{closure#0}, core::ops::control_flow::ControlFlow<core::ops::control_flow::ControlFlow<horizon_world::chunk::BlockSection>>>
+0.        0.002      <core::iter::adapters::map::Map<core::slice::iter::Iter<serde_json::value::Value>, <horizon_world::worldgen::structure::processor::Processor>::decode::{closure#3}> as core::iter::traits::iterator::Iterator>::try_fold::<(), <core::iter::adapters::GenericShunt<core::iter::adapters::map::Map<core::slice::iter::Iter<serde_json::value::Value>, <horizon_world::worldgen::structure::processor::Processor>::decode::{closure#3}>, core::result::Result<core::convert::Infallible, horizon_world::worldgen::DecodeError>> as core::iter::traits::iterator::Iterator>::try_fold<(), core::iter::traits::iterator::Iterator::try_for_each::call<horizon_world::worldgen::structure::processor::Rule, core::ops::control_flow::ControlFlow<horizon_world::worldgen::structure::processor::Rule>, core::ops::control_flow::ControlFlow<horizon_world::worldgen::structure::processor::Rule>::Break>::{closure#0}, core::ops::control_flow::ControlFlow<horizon_world::worldgen::structure::processor::Rule>>::{closure#0}, core::ops::control_flow::ControlFlow<core::ops::control_flow::ControlFlow<horizon_world::worldgen::structure::processor::Rule>>>
+0.        0.002      <core::iter::adapters::map::Map<core::slice::iter::Iter<serde_json::value::Value>, <horizon_world::worldgen::structure::processor::ProcessorList>::decode::{closure#1}> as core::iter::traits::iterator::Iterator>::try_fold::<(), <core::iter::adapters::GenericShunt<core::iter::adapters::map::Map<core::slice::iter::Iter<serde_json::value::Value>, <horizon_world::worldgen::structure::processor::ProcessorList>::decode::{closure#1}>, core::result::Result<core::convert::Infallible, horizon_world::worldgen::DecodeError>> as core::iter::traits::iterator::Iterator>::try_fold<(), core::iter::traits::iterator::Iterator::try_for_each::call<horizon_world::worldgen::structure::processor::Processor, core::ops::control_flow::ControlFlow<horizon_world::worldgen::structure::processor::Processor>, core::ops::control_flow::ControlFlow<horizon_world::worldgen::structure::processor::Processor>::Break>::{closure#0}, core::ops::control_flow::ControlFlow<horizon_world::worldgen::structure::processor::Processor>>::{closure#0}, core::ops::control_flow::ControlFlow<core::ops::control_flow::ControlFlow<horizon_world::worldgen::structure::processor::Processor>>>
+0.        0.002      <flate2::deflate::bufread::DeflateDecoder<flate2::bufreader::BufReader<&[u8]>> as alloc::io::read::Read>::read
+0.        0.002      <flate2::gz::bufread::GzDecoder<flate2::bufreader::BufReader<&[u8]>> as alloc::io::read::Read>::read
+0.        0.002      <flate2::mem::Decompress>::decompress
+0.        0.001      <hashbrown::map::HashMap<horizon_world::registry::BlockStateId, u32, core::hash::BuildHasherDefault<horizon_world::chunk::StateIdHasher>>>::insert
+0.        0.001      <hashbrown::raw::RawTable<(horizon_world::registry::BlockStateId, u32)>>::reserve_rehash::<hashbrown::map::make_hasher<horizon_world::registry::BlockStateId, u32, core::hash::BuildHasherDefault<horizon_world::chunk::StateIdHasher>>::{closure#0}>
+0.        0.001      <hashbrown::raw::RawTableInner>::fallible_with_capacity::<alloc::alloc::Global>
+0.        0.001      <horizon_core::density::NoiseSampler as horizon_core::density::DensitySampler>::sample_value
+0.        0.185      <horizon_core::density::SamplerContext>::with_buffer::<(), <horizon_core::density::interpolation::InterpolatedSampler>::sample_block_volume::{closure#4}>
+0.        0.175      <horizon_core::density::SamplerContext>::with_buffer::<(), <horizon_core::density::selection::DensityValue>::with_volume<(), <horizon_core::density::selection::LerpSampler as horizon_core::density::DensitySampler>::sample_volume::{closure#0}::{closure#0}>::{closure#0}>
+0.        0.138      <horizon_core::density::SamplerContext>::with_buffer::<(), <horizon_core::density::selection::DensityValue>::with_volume<(), <horizon_core::density::selection::LerpSampler as horizon_core::density::DensitySampler>::sample_volume::{closure#0}>::{closure#0}>
+0.        0.001      <horizon_core::density::SamplerContext>::with_buffer::<(), <horizon_core::density::slice::SliceSampler as horizon_core::density::DensitySampler>::sample_volume::{closure#1}>
+0.        0.212      <horizon_core::density::arithmetic::BinarySampler as horizon_core::density::DensitySampler>::sample_volume
+0.        0.185      <horizon_core::density::interpolation::InterpolatedSampler as horizon_core::density::DensitySampler>::sample_volume
+0.        0.185      <horizon_core::density::interpolation::InterpolatedSampler>::sample_block_volume
+0.        0.175      <horizon_core::density::selection::LerpSampler as horizon_core::density::DensitySampler>::sample_volume
+0.        0.001      <horizon_core::density::slice::SliceSampler as horizon_core::density::DensitySampler>::sample_volume
+0.        0.175      <horizon_core::density::world_fields::BlendDensitySampler as horizon_core::density::DensitySampler>::sample_volume
+0.        0.175      <horizon_core::noise::stack::NoiseStack as horizon_core::noise::stack::Noise>::add_to_volume
+0.        0.002      <horizon_core::storage::PackedStorage>::new
+0.        0.001      <horizon_world::chunk::BlockSection>::uniform
+0.        0.003      <horizon_world::nbt::Reader>::string
+0.        0.001      <horizon_world::worldgen::biome_source::runtime::BiomeSourceResolver>::sample
+0.        0.001      <horizon_world::worldgen::climate::ClimateSampler>::sample
+0.        0.002      <horizon_world::worldgen::climate::ClimateSampler>::sample_volume
+0.        2.561      <horizon_world::worldgen::generator::GeneratorWorker>::generate_proto
+0.        2.561      <horizon_world::worldgen::generator::Pipeline<horizon_core::random::LegacyRandom> as horizon_world::worldgen::generator::SeededPipeline>::generate
+0.        0.016      <horizon_world::worldgen::generator::Pipeline<horizon_core::random::LegacyRandom>>::base_columns
+0.        0.016      <horizon_world::worldgen::generator::Pipeline<horizon_core::random::LegacyRandom>>::noise_column
+0.        0.066      <horizon_world::worldgen::generator_structures::StructureState>::references::<horizon_world::worldgen::generator::StructureQueries<horizon_core::random::LegacyRandom>>
+0.        0.002      <horizon_world::worldgen::material_condition::Compiled<horizon_core::random::LegacyRandom>>::compile::<horizon_world::worldgen::material_condition::density::MaterialDensitySources<horizon_world::worldgen::generator::SurfaceQueries<horizon_core::random::LegacyRandom>>>
+0.        0.002      <horizon_world::worldgen::material_condition::rule::MaterialRule as core::clone::Clone>::clone
+0.        0.001      <horizon_world::worldgen::rule_test::RuleTest>::decode
+0.        0.001      <horizon_world::worldgen::rule_test::RuleTest>::decode::{closure#0}
+0.        0.040      <horizon_world::worldgen::structure::StructureResources>::template
+0.        0.040      <horizon_world::worldgen::structure::jigsaw::Placer>::children::<horizon_world::worldgen::generator::StructureQueries<horizon_core::random::LegacyRandom>, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::LegacyRandom>>
+0.        0.039      <horizon_world::worldgen::structure::jigsaw::PoolElement>::decode
+0.        0.001      <horizon_world::worldgen::structure::jigsaw::PoolElement>::shuffled_jigsaws::<horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::LegacyRandom>>
+0.        0.039      <horizon_world::worldgen::structure::jigsaw::Pools>::get
+0.        0.002      <horizon_world::worldgen::structure::processor::Processor>::decode
+0.        0.002      <horizon_world::worldgen::structure::processor::Processor>::decode::{closure#3}::{closure#0}
+0.        0.002      <horizon_world::worldgen::structure::processor::ProcessorList>::decode
+0.        0.009      <horizon_world::worldgen::structure::template::StructureTemplate>::from_nbt
+0.        0.002      <horizon_world::worldgen::terrain::TerrainChunk<horizon_world::worldgen::generator::GenBlockStates>>::new
+0.        0.001      <i8 as <[core::mem::maybe_uninit::MaybeUninit<_>]>::write_default::DefaultSpec>::write_default
+0.        2.561      <static>@0x14aed (<libgp-collector.so>)
+0.        2.561      <static>@0x97aaa (<libc.so.6>)
+0.        0.001      <std::sync::once::Once>::call_once_force::<<std::sync::once_lock::OnceLock<alloc::vec::Vec<horizon_world::worldgen::structure::template::JigsawInfo>>>::initialize<<std::sync::once_lock::OnceLock<alloc::vec::Vec<horizon_world::worldgen::structure::template::JigsawInfo>>>::get_or_init<<horizon_world::worldgen::structure::template::StructureTemplate>::jigsaws::{closure#0}>::{closure#0}, !>::{closure#0}>::{closure#0}
+0.        0.001      <std::sync::once_lock::OnceLock<alloc::vec::Vec<horizon_world::worldgen::structure::template::JigsawInfo>>>::initialize::<<std::sync::once_lock::OnceLock<alloc::vec::Vec<horizon_world::worldgen::structure::template::JigsawInfo>>>::get_or_init<<horizon_world::worldgen::structure::template::StructureTemplate>::jigsaws::{closure#0}>::{closure#0}, !>
+0.        0.001      <std::sys::sync::once::futex::Once>::call
+0.        2.561      <std::sys::thread::unix::Thread>::new::thread_start
+0.        2.561      <std::thread::lifecycle::spawn_unchecked<chunkgen_profile::main::{closure#2}::{closure#0}::{closure#0}, core::result::Result<(), alloc::boxed::Box<dyn core::error::Error + core::marker::Send + core::marker::Sync>>>::{closure#1} as core::ops::function::FnOnce<()>>::call_once::{shim:vtable#0}
+0.        0.003      alloc::io::read::default_read_to_end::<flate2::gz::read::GzDecoder<&[u8]>>
+0.        0.002      core::iter::adapters::try_process::<core::iter::adapters::map::Map<core::slice::iter::Iter<serde_json::value::Value>, <horizon_world::worldgen::structure::processor::Processor>::decode::{closure#3}>, horizon_world::worldgen::structure::processor::Rule, core::result::Result<core::convert::Infallible, horizon_world::worldgen::DecodeError>, <core::result::Result<alloc::vec::Vec<horizon_world::worldgen::structure::processor::Rule>, horizon_world::worldgen::DecodeError> as core::iter::traits::collect::FromIterator<core::result::Result<horizon_world::worldgen::structure::processor::Rule, horizon_world::worldgen::DecodeError>>>::from_iter<core::iter::adapters::map::Map<core::slice::iter::Iter<serde_json::value::Value>, <horizon_world::worldgen::structure::processor::Processor>::decode::{closure#3}>>::{closure#0}, alloc::vec::Vec<horizon_world::worldgen::structure::processor::Rule>>
+0.        0.002      core::iter::adapters::try_process::<core::iter::adapters::map::Map<core::slice::iter::Iter<serde_json::value::Value>, <horizon_world::worldgen::structure::processor::ProcessorList>::decode::{closure#1}>, horizon_world::worldgen::structure::processor::Processor, core::result::Result<core::convert::Infallible, horizon_world::worldgen::DecodeError>, <core::result::Result<alloc::vec::Vec<horizon_world::worldgen::structure::processor::Processor>, horizon_world::worldgen::DecodeError> as core::iter::traits::collect::FromIterator<core::result::Result<horizon_world::worldgen::structure::processor::Processor, horizon_world::worldgen::DecodeError>>>::from_iter<core::iter::adapters::map::Map<core::slice::iter::Iter<serde_json::value::Value>, <horizon_world::worldgen::structure::processor::ProcessorList>::decode::{closure#1}>>::{closure#0}, alloc::vec::Vec<horizon_world::worldgen::structure::processor::Processor>>
+0.        0.006      core::ptr::drop_glue::<horizon_world::nbt::Tag>
+0.        0.006      core::ptr::drop_glue::<horizon_world::nbt::Tag>
+0.        0.006      core::ptr::drop_glue::<horizon_world::nbt::Tag>
+0.        0.022      horizon_world::nbt::read_named
+0.        0.001      horizon_world::worldgen::density::identifier
+0.        0.002      horizon_world::worldgen::material_condition::codec::identifier
+0.        0.040      horizon_world::worldgen::structure::jigsaw::assemble::<horizon_world::worldgen::generator::StructureQueries<horizon_core::random::LegacyRandom>, horizon_core::random::worldgen::WorldgenRandom<horizon_core::random::LegacyRandom>>
+0.        0.001      horizon_world::worldgen::structure::jigsaw::template_jigsaws
+0.        0.059      horizon_world::worldgen::structure::start::create_starts::<horizon_world::worldgen::generator::StructureQueries<horizon_core::random::LegacyRandom>>
+0.        0.059      horizon_world::worldgen::structure::start::try_generate::<horizon_world::worldgen::generator::StructureQueries<horizon_core::random::LegacyRandom>>
+0.        0.002      miniz_oxide::inflate::core::decompress_with_limit
+0.        0.002      miniz_oxide::inflate::stream::inflate
+0.        0.002      realloc
+0.        2.561      std::sys::backtrace::__rust_begin_short_backtrace::<chunkgen_profile::main::{closure#2}::{closure#0}::{closure#0}, core::result::Result<(), alloc::boxed::Box<dyn core::error::Error + core::marker::Send + core::marker::Sync>>>
