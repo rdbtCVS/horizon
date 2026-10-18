@@ -1,3 +1,0 @@
-   text	   data	    bss	    dec	    hex	filename
-5167835	 130640	    576	5299051	 50db6b	/srv/bob-data/horizon-surface-7deb9745/baseline
-5170747	 130584	   1768	5303099	 50eb3b	/srv/bob-data/horizon-surface-7deb9745/candidate
