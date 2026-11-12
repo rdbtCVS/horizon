@@ -202,8 +202,7 @@ impl UpgradeProgress {
     }
     pub fn set_dimension_progress(&self, dimension: &str, progress: f32) {
         if let Ok(mut map) = self.dimension_progress.lock() {
-            let entry = map.entry(dimension.to_owned()).or_insert(0.0);
-            *entry = entry.max(progress);
+            map.insert(dimension.to_owned(), progress);
         }
     }
     /// `getDimensionProgress`: 0 for a dimension nothing was reported for.

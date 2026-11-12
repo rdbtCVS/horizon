@@ -19,8 +19,7 @@ use std::collections::{BTreeMap, HashSet};
 use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
-use std::sync::Arc;
-use std::sync::atomic::{AtomicUsize, Ordering};
+use std::sync::{Arc, Mutex};
 use std::thread::JoinHandle;
 
 const NEW_DIRECTORY_PREFIX: &str = "new_";
@@ -223,8 +222,10 @@ impl RegionStorageUpgrader {
         let total_size = self.progress.total_file_fix_stats().total_operations() as f32;
         self.progress.set_status(UpgradeStatus::Upgrading);
         let files = std::mem::take(&mut self.files);
-        // Tracks the finished-file count atomically so the shown progress never goes back.
-        let finished = AtomicUsize::new(0);
+        // The finished-file count and the dimension's progress are written under
+        // one lock, so workers finishing out of order never move the bar back
+        // within this stage; `setDimensionProgress` itself stays a plain put.
+        let finished = Mutex::new(0usize);
         let workers = self.builder.threads.clamp(1, files.len());
         let this = &*self;
         let pool = rayon::ThreadPoolBuilder::new()
@@ -239,7 +240,9 @@ impl RegionStorageUpgrader {
                     return;
                 }
                 this.upgrade_file(file);
-                let done = finished.fetch_add(1, Ordering::SeqCst) + 1;
+                let mut finished = finished.lock().unwrap_or_else(|e| e.into_inner());
+                *finished += 1;
+                let done = *finished;
                 let dimension_progress = done as f32 / total_size;
                 let total_progress = (this.start_index as usize + done) as f32 / total_size;
                 this.progress
@@ -252,7 +255,6 @@ impl RegionStorageUpgrader {
             Err(_) => work(),
         }
         if !self.progress.is_canceled() {
-            this.progress.set_dimension_progress(&this.dimension, 1.0);
             this.progress
                 .set_total_progress((this.start_index as usize + files.len()) as f32 / total_size);
         }
