@@ -16,11 +16,54 @@
 //! own — the setting in `settings.json`, kept in memory so a request doesn't read the file — and
 //! hands the address to the parts that build their agents.
 use crate::backend::Settings;
-use std::sync::Mutex;
+use rustls::{
+    client::danger::{ServerCertVerified, ServerCertVerifier},
+    pki_types::{CertificateDer, ServerName, UnixTime},
+    RootCertStore,
+};
+use std::io::BufReader;
+use std::sync::{Arc, Mutex, MutexGuard};
+
+pub type ProxyState = Option<(Option<String>, Option<String>, bool)>;
 
 /// The launcher's setting, as `announce` last read it, or None before it has: a request shouldn't
 /// read `settings.json` every time, and an import fetches hundreds of jars.
-static SET: Mutex<Option<Option<String>>> = Mutex::new(None);
+static SET: Mutex<ProxyState> = Mutex::new(None);
+
+#[derive(Debug)]
+struct NoVerifier(Arc<rustls::crypto::CryptoProvider>);
+
+impl ServerCertVerifier for NoVerifier {
+    fn verify_server_cert(
+        &self,
+        _end_entity: &CertificateDer<'_>,
+        _intermediates: &[CertificateDer<'_>],
+        _server_name: &ServerName<'_>,
+        _ocsp_response: &[u8],
+        _now: UnixTime,
+    ) -> Result<ServerCertVerified, rustls::Error> {
+        Ok(ServerCertVerified::assertion())
+    }
+    fn verify_tls12_signature(
+        &self,
+        _message: &[u8],
+        _cert: &CertificateDer<'_>,
+        _dss: &rustls::DigitallySignedStruct,
+    ) -> Result<rustls::client::danger::HandshakeSignatureValid, rustls::Error> {
+        Ok(rustls::client::danger::HandshakeSignatureValid::assertion())
+    }
+    fn verify_tls13_signature(
+        &self,
+        _message: &[u8],
+        _cert: &CertificateDer<'_>,
+        _dss: &rustls::DigitallySignedStruct,
+    ) -> Result<rustls::client::danger::HandshakeSignatureValid, rustls::Error> {
+        Ok(rustls::client::danger::HandshakeSignatureValid::assertion())
+    }
+    fn supported_verify_schemes(&self) -> Vec<rustls::SignatureScheme> {
+        self.0.signature_verification_algorithms.supported_schemes()
+    }
+}
 
 /// The proxy address to reach `url` through: the launcher's setting, else the environment's, unless
 /// `url` is a local address or `NO_PROXY` names its host.
@@ -39,11 +82,49 @@ pub fn for_url(url: &str) -> Option<ureq::Proxy> {
 
 /// `builder`, reaching `url` through the proxy when one is set. For the parts that ask for a few
 /// addresses; the ones that fetch file after file keep their agent instead (`keep`).
-pub fn agent(builder: ureq::AgentBuilder, url: &str) -> ureq::AgentBuilder {
-    match for_url(url) {
+pub fn agent(mut builder: ureq::AgentBuilder, url: &str) -> ureq::AgentBuilder {
+    builder = match for_url(url) {
         Some(proxy) => builder.proxy(proxy),
         None => builder,
+    };
+
+    let (cert_path, disable_check) = cert_config();
+    if disable_check {
+        let provider = Arc::new(rustls::crypto::ring::default_provider());
+        let config = rustls::ClientConfig::builder_with_provider(provider.clone())
+            .with_safe_default_protocol_versions()
+            .unwrap()
+            .dangerous()
+            .with_custom_certificate_verifier(Arc::new(NoVerifier(provider)))
+            .with_no_client_auth();
+        builder = builder.tls_config(Arc::new(config));
+    } else if let Some(path_str) = cert_path {
+        if let Ok(cert_bytes) = std::fs::read(&path_str) {
+            let mut root_store = RootCertStore::empty();
+
+            if path_str.ends_with(".der") {
+                let cert = rustls::pki_types::CertificateDer::from(cert_bytes);
+                let _ = root_store.add(cert);
+            } else {
+                let mut cursor = BufReader::new(&cert_bytes[..]);
+                for cert in rustls_pemfile::certs(&mut cursor).flatten() {
+                    let _ = root_store.add(cert);
+                }
+            }
+
+            if let Ok(native_certs) = rustls_native_certs::load_native_certs() {
+                for cert in native_certs {
+                    let _ = root_store.add(cert);
+                }
+            }
+
+            let config = rustls::ClientConfig::builder()
+                .with_root_certificates(root_store)
+                .with_no_client_auth();
+            builder = builder.tls_config(Arc::new(config));
+        }
     }
+    builder
 }
 
 /// The launcher's setting for the programs it starts that download by themselves, in curl's
@@ -78,23 +159,34 @@ pub fn refuse(spec: &str) -> Option<String> {
 ///
 /// The environment's is left to them: they read it per address (`HTTPS_PROXY` for an https jar,
 /// `HTTP_PROXY` for an http one), the way the launcher does for its own.
-pub fn announce(setting: Option<String>) {
-    let spec = setting
-        .map(|p| p.trim().to_owned())
-        .filter(|p| !p.is_empty());
-    *held() = Some(spec.clone());
+pub fn announce(proxy: Option<String>, cert_path: Option<String>, disable_cert: bool) {
+    let spec = proxy.map(|p| p.trim().to_owned()).filter(|p| !p.is_empty());
+    let mut set = held();
+    *set = Some((spec.clone(), cert_path, disable_cert));
     horizon_port_pack::net::set_proxy(spec);
+}
+
+pub fn cert_config() -> (Option<String>, bool) {
+    let set = held();
+    if let Some((_, cert, disable)) = &*set {
+        (cert.clone(), *disable)
+    } else {
+        (None, false)
+    }
 }
 
 /// The launcher's setting: read from `settings.json` the first time it is needed and kept after
 /// that, so a download doesn't read the file once per file.
 fn setting() -> Option<String> {
     let mut set = held();
-    match set.clone() {
-        Some(kept) => kept,
+    match &*set {
+        Some((proxy, _, _)) => proxy.clone(),
         None => {
-            let read = written();
-            *set = Some(read.clone());
+            let read = written()
+                .map(|p| p.trim().to_owned())
+                .filter(|p| !p.is_empty());
+            *set = Some((read.clone(), None, false));
+            horizon_port_pack::net::set_proxy(read.clone());
             read
         }
     }
@@ -110,7 +202,7 @@ fn written() -> Option<String> {
 
 /// The setting's lock, even after a thread panicked while holding it: an address lost to a panic
 /// is worse than an old one kept.
-fn held() -> std::sync::MutexGuard<'static, Option<Option<String>>> {
+fn held() -> MutexGuard<'static, ProxyState> {
     SET.lock().unwrap_or_else(|e| e.into_inner())
 }
 

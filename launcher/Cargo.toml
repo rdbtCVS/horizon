@@ -16,7 +16,10 @@ object = { version = "0.39", default-features = false, features = ["read_core", 
 # its own name. wgpu renders on Linux, not blade (#3812).
 gpui = { package = "gpui-fast", version = "0.1.15" }
 gpui_platform = { package = "gpui-fast-platform", version = "0.1.15", features = ["wayland", "x11", "font-kit"] }
-ureq = { version = "2", features = ["json", "tls"], default-features = false }
+ureq = { version = "2", features = ["json", "tls", "native-certs"], default-features = false }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+rustls-pemfile = "2"
+rustls-native-certs = "0.7"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 # Validate trait injection bindings before passing them to the shared generator.
@@ -27,7 +30,7 @@ quote = "1"
 # Checks the client jar and the version file found in other launchers' folders (sources.rs).
 sha1 = "0.10"
 tokio = { version = "1", features = ["rt-multi-thread", "fs", "io-util", "sync", "time", "macros", "net"] }
-reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "socks", "stream"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls-native-roots", "socks", "stream"] }
 futures-util = "0.3"
 httpdate = "1"
 # The mod browser checks Modrinth's SHA-512 before a pack reaches the game folder (browser/download.rs).

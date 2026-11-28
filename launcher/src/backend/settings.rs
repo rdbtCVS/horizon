@@ -104,6 +104,10 @@ pub struct Settings {
     /// Unset means none: the environment's `HTTPS_PROXY` and `HTTP_PROXY` apply instead.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub proxy: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub custom_cert_path: Option<String>,
+    #[serde(default)]
+    pub disable_cert_check: bool,
     /// Only read to move an old light appearance to the Taiga theme (`parse`): always dark now,
     /// a theme being one look.
     #[serde(default)]
