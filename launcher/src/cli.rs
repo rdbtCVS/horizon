@@ -1729,7 +1729,11 @@ fn execute(command: Cmd, as_json: bool) -> Result<i32, String> {
                 } else {
                     set_setting(&mut settings, &key, &value)?;
                     settings.save()?;
-                    horizon_launcher::proxy::announce(settings.proxy.clone());
+                    horizon_launcher::proxy::announce(
+                        settings.proxy.clone(),
+                        settings.custom_cert_path.clone(),
+                        settings.disable_cert_check,
+                    );
                 }
             }
             let all = settings_json(&settings);

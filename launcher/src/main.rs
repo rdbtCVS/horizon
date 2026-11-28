@@ -546,6 +546,10 @@ struct Launcher {
     proxy_input: line_edit::LineEdit,
     proxy_focused: bool,
     proxy_focus: FocusHandle,
+    cert_input: line_edit::LineEdit,
+    cert_focused: bool,
+    cert_error: Option<String>,
+    cert_focus: FocusHandle,
     /// Opt-in data collection: the player's answer and Settings' section (`collection`).
     collection: collection::Collection,
     /// Settings' "Connect an AI agent" (`agents_page`).

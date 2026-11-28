@@ -260,6 +260,8 @@ impl Launcher {
                     ))
                     .child(group("Network", "globe"))
                     .child(self.proxy_row(n + 4, cx))
+                    .child(self.cert_row(n + 5, cx))
+                    .child(self.disable_cert_row(n + 6, cx))
                     .child(group("Game", "gamepad"))
                     .child(self.game_architecture_row(n + 5, cx))
                     .child(self.game_args_row(n + 6, cx))
@@ -590,13 +592,155 @@ impl Launcher {
         )
     }
 
+    /// Settings' Custom Certificate row: the path to a self-signed cert.
+    pub(crate) fn cert_row(&self, n: usize, cx: &mut Context<Self>) -> Div {
+        let t = self.theme;
+        let focused = self.cert_focused;
+        let glass = glass_ui::flat();
+        let placeholder = tr("Path to certificate (PEM/DER)");
+        let field = div()
+            .id("cert-path")
+            .track_focus(&self.cert_focus)
+            .flex()
+            .items_center()
+            .w(px(300.))
+            .h(px(30.))
+            .px(px(12.))
+            .overflow_hidden()
+            .border_2()
+            .border_color(if focused { t.accent } else { t.outline })
+            .bg(t.well)
+            .font_family(theme::MONO)
+            .text_size(px(12.))
+            .cursor_text()
+            .child(if glass {
+                line_edit::content_in_width(&self.cert_input, &t, focused, placeholder)
+            } else {
+                line_edit::content_with(
+                    &self.cert_input,
+                    &t,
+                    focused,
+                    false,
+                    false,
+                    placeholder.into(),
+                )
+            })
+            .on_click(cx.listener(|this, _: &ClickEvent, window, cx| {
+                window.focus(&this.cert_focus, cx);
+                cx.notify();
+            }))
+            .on_key_down(cx.listener(|this, ev: &KeyDownEvent, window, cx| {
+                match line_edit::handle(&mut this.cert_input, ev, cx) {
+                    line_edit::Key::Pass => return,
+                    line_edit::Key::Escape => window.blur(cx),
+                    line_edit::Key::Edited => this.save_cert(),
+                    _ => {}
+                }
+                cx.stop_propagation();
+                cx.notify();
+            }));
+        let field = line_edit::mouse(field, cx, |this| &mut this.cert_input);
+        let detail = match (&self.cert_error, focused) {
+            (Some(err), false) => div()
+                .text_color(t.danger)
+                .child(err.clone())
+                .into_any_element(),
+            _ => div()
+                .child(tr(
+                    "Path to a custom certificate file to trust (e.g. for a local proxy).",
+                ))
+                .into_any_element(),
+        };
+
+        if glass {
+            return glass_ui::setting_row_stacked(
+                tr("Custom Certificate"),
+                Some(detail),
+                glass_ui::wide_field(field, focused).into_any_element(),
+            );
+        }
+        index_row(
+            n,
+            tr("Custom Certificate"),
+            Some(detail),
+            Some(field.into_any_element()),
+            &t,
+        )
+    }
+
+    /// Settings' Disable Certificate row: skip TLS checks (unsafe).
+    pub(crate) fn disable_cert_row(&self, n: usize, cx: &mut Context<Self>) -> Div {
+        let t = self.theme;
+        let toggle = switch("disable-cert", self.settings.disable_cert_check, &t).on_click(
+            cx.listener(|this, _: &ClickEvent, _, cx| {
+                this.settings.disable_cert_check = !this.settings.disable_cert_check;
+                this.save_settings();
+                horizon_launcher::proxy::announce(
+                    this.settings.proxy.clone(),
+                    this.settings.custom_cert_path.clone(),
+                    this.settings.disable_cert_check,
+                );
+                cx.notify();
+            }),
+        );
+
+        let detail = div()
+            .child(tr(
+                "Ignore certificate errors (unsafe). Use only if you trust your local network.",
+            ))
+            .into_any_element();
+
+        if glass_ui::flat() {
+            return glass_ui::setting_row_stacked(
+                tr("Disable Certificate Check"),
+                Some(detail),
+                toggle.into_any_element(),
+            );
+        }
+
+        index_row(
+            n,
+            tr("Disable Certificate Check"),
+            Some(detail),
+            Some(toggle.into_any_element()),
+            &t,
+        )
+    }
+
     /// Keeps the Proxy field in `settings.json`, and tells the parts that build their own agents
     /// (`horizon-port-pack`) which proxy to use.
     pub(crate) fn save_proxy(&mut self) {
         let value = self.proxy_input.text().trim().to_owned();
         self.settings.proxy = (!value.is_empty()).then_some(value);
         self.save_settings();
-        horizon_launcher::proxy::announce(self.settings.proxy.clone());
+        horizon_launcher::proxy::announce(
+            self.settings.proxy.clone(),
+            self.settings.custom_cert_path.clone(),
+            self.settings.disable_cert_check,
+        );
+    }
+
+    /// Keeps the Certificate field in `settings.json` and validates the path.
+    pub(crate) fn save_cert(&mut self) {
+        let value = self.cert_input.text().trim().to_owned();
+        self.cert_error = None;
+
+        if !value.is_empty() {
+            let path = std::path::Path::new(&value);
+            if !path.exists() || !path.is_file() {
+                self.cert_error = Some("Certificate file not found.".to_string());
+                return;
+            }
+        }
+
+        self.settings.custom_cert_path = (!value.is_empty()).then_some(value);
+        self.save_settings();
+
+        horizon_launcher::proxy::announce(
+            self.settings.proxy.clone(),
+            self.settings.custom_cert_path.clone(),
+            self.settings.disable_cert_check,
+        );
     }
 
     /// Settings' Microsoft accounts: who is signed in and plays, the sign-in with its code. The

@@ -23,6 +23,7 @@ use reqwest::{header, Client, Response, StatusCode, Url};
 use sha1::{Digest, Sha1};
 use std::{
     collections::HashMap,
+    env,
     path::{Path, PathBuf},
     sync::{
         atomic::{AtomicBool, AtomicU64, Ordering::Relaxed},
@@ -941,6 +942,17 @@ fn build_client(config: &Config, proxy: Option<&str>) -> Result<Client, Failure>
         .pool_max_idle_per_host(config.per_host)
         .redirect(reqwest::redirect::Policy::none())
         .no_proxy();
+    // ==========================================
+    if let Ok(cert_path) = env::var("SSL_CERT_FILE") {
+        if let Ok(cert_bytes) = std::fs::read(cert_path) {
+            if let Ok(certs) = reqwest::Certificate::from_pem_bundle(&cert_bytes) {
+                for cert in certs {
+                    builder = builder.add_root_certificate(cert);
+                }
+            }
+        }
+    }
+    // ==========================================
     if let Some(proxy) = proxy {
         let url = Url::parse(proxy).map_err(Failure::permanent)?;
         if !matches!(

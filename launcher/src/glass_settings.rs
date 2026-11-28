@@ -69,7 +69,7 @@ const INDEX: [&[&str]; 10] = [
         "Update mods automatically",
         "Memory",
     ],
-    &["Proxy"],
+    &["Proxy", "Custom Certificate", "Disable Certificate Check"],
     &["Storage", "Disk space", "Cache"],
     &["Data collection", "Telemetry", "Crash reports"],
     &["No AI", "Agents", "MCP"],
@@ -664,7 +664,10 @@ impl Launcher {
                 Some(b.opening.into_any_element()),
                 &t,
             ));
-        let network = section(5).child(self.proxy_row(n, cx));
+        let network = section(5)
+            .child(self.proxy_row(n, cx))
+            .child(self.cert_row(n + 1, cx))
+            .child(self.disable_cert_row(n + 2, cx));
         let game = section(4)
             .child(self.game_architecture_row(n, cx))
             .child(self.game_args_row(n + 1, cx))
